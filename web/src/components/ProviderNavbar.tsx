@@ -12,7 +12,7 @@ export default function ProviderNavbar() {
 
       <div className="flex items-center gap-0">
         <Link href="/" className="px-4 py-1.5 text-xs text-body hover:text-heading transition-colors">
-          About
+          Home
         </Link>
       </div>
     </nav>

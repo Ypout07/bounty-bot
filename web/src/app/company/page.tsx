@@ -7,11 +7,13 @@ import ChallengeList from "@/components/ChallengeList";
 import ProviderNavbar from "@/components/ProviderNavbar";
 import ChallengeForm from "@/components/ChallengeForm";
 import ProviderChallengeDetail from "@/components/ProviderChallengeDetail";
+import PostChallengePanel from "@/components/PostChallengePanel";
 
 export default function CompanyPage() {
   const [challenges, setChallenges] = useState<ProviderChallenge[]>([]);
   const [selected, setSelected] = useState<ProviderChallenge | null>(null);
   const [showForm, setShowForm] = useState(false);
+  const [showPostModal, setShowPostModal] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -48,8 +50,10 @@ export default function CompanyPage() {
 
     if (saved) {
       setChallenges((prev) => [saved, ...prev]);
+      setSelected(saved);
     }
     setShowForm(false);
+    setShowPostModal(true);
   }
 
   return (
@@ -80,9 +84,11 @@ export default function CompanyPage() {
           )}
         </div>
 
-        {/* Right — Detail or Form */}
+        {/* Right — Detail, Form, or Post-creation panel */}
         <div className="flex-1 min-w-0 flex flex-col bg-white">
-          {showForm ? (
+          {showPostModal ? (
+            <PostChallengePanel onContinue={() => setShowPostModal(false)} />
+          ) : showForm ? (
             <ChallengeForm onSubmit={handleSubmit} />
           ) : selected ? (
             <ProviderChallengeDetail challenge={selected} />
