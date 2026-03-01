@@ -5,7 +5,6 @@ from dotenv import load_dotenv
 from prompt import MRE_SUBAGENT_PROMPT, SE_SUBAGENT_PROMPT, SYSTEM_PROMPT
 from tools import (
     execute_file,
-    get_file_structure_context,
     read_contents_of_file,
     write_file,
 )
@@ -21,7 +20,7 @@ memory = FullCompressionMemory(summarizer_llm=summarizer_llm, max_tokens=250000)
 
 @subagent(
     system_prompt=MRE_SUBAGENT_PROMPT,
-    tools=[get_file_structure_context, read_contents_of_file, execute_file, write_file],
+    tools=[read_contents_of_file, execute_file, write_file],
     llm=GeminiLLM(api_key=api_key, model="gemini-3-flash-preview", max_tokens=8192),
     max_calls=10,
     max_tokens=16384,
@@ -32,7 +31,7 @@ async def minimal_reproducible_example():
 
 @subagent(
     system_prompt=SE_SUBAGENT_PROMPT,
-    tools=[get_file_structure_context, read_contents_of_file, execute_file, write_file],
+    tools=[read_contents_of_file, execute_file, write_file],
     llm=GeminiLLM(api_key=api_key, model="gemini-3-flash-preview", max_tokens=8192),
     max_calls=10,
     max_tokens=16384,
@@ -50,7 +49,6 @@ agent = Agent(
     agent_name="DebugBot",
     tools=[
         StopTool(),
-        get_file_structure_context,
         read_contents_of_file,
         execute_file,
         write_file,
@@ -59,6 +57,6 @@ agent = Agent(
 
 print("\n\nFirst prompt:\n")
 result = agent.run(
-    "Look at the codebase, run the tests, and fix the problems. Don't stop until all tests pass"
+    "Look at /workspace, run the tests, and fix the problems. Don't stop until all tests pass"
 )
 print(result.content)
