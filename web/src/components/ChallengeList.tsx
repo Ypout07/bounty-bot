@@ -4,7 +4,7 @@ import { useState, useMemo } from "react";
 import { Challenge } from "@/lib/types";
 import ChallengeCard from "./ChallengeCard";
 
-type SortKey = "trending" | "deadline-soonest" | "deadline-latest" | "upcoming-soonest" | "upcoming-latest" | "recent";
+type SortKey = "trending" | "deadline-soonest" | "deadline-latest" | "upcoming-soonest" | "upcoming-latest" | "recent" | "past";
 
 const sortOptions: { key: SortKey; label: string }[] = [
   { key: "recent", label: "Recent" },
@@ -13,6 +13,7 @@ const sortOptions: { key: SortKey; label: string }[] = [
   { key: "deadline-latest", label: "Deadline: Latest" },
   { key: "upcoming-soonest", label: "Upcoming: Soonest" },
   { key: "upcoming-latest", label: "Upcoming: Latest" },
+  { key: "past", label: "Past" },
 ];
 
 interface ChallengeListProps {
@@ -38,15 +39,17 @@ export default function ChallengeList({
     const isRecent = sort === "recent";
     const isUpcoming = sort === "upcoming-soonest" || sort === "upcoming-latest";
     const isDeadline = sort === "deadline-soonest" || sort === "deadline-latest";
+    const isPast = sort === "past";
     const now = Date.now();
     let list = challenges.filter((c) => {
       const matchesSearch =
         c.title.toLowerCase().includes(q) ||
         c.company.toLowerCase().includes(q);
       if (!matchesSearch) return false;
-      if (isRecent) return new Date(c.startDate).getTime() <= now;
+      if (isPast) return new Date(c.deadline).getTime() <= now;
+      if (isRecent) return new Date(c.startDate).getTime() <= now && new Date(c.deadline).getTime() > now;
       if (isUpcoming) return new Date(c.startDate).getTime() > now;
-      if (isDeadline) return new Date(c.startDate).getTime() <= now;
+      if (isDeadline) return new Date(c.startDate).getTime() <= now && new Date(c.deadline).getTime() > now;
       return true;
     });
 
@@ -64,6 +67,8 @@ export default function ChallengeList({
         cmp = new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
       } else if (sort === "recent") {
         cmp = new Date(b.postedAt).getTime() - new Date(a.postedAt).getTime();
+      } else if (sort === "past") {
+        cmp = new Date(b.deadline).getTime() - new Date(a.deadline).getTime();
       }
       // break ties alphabetically by title
       return cmp !== 0 ? cmp : a.title.localeCompare(b.title);
@@ -86,9 +91,9 @@ export default function ChallengeList({
       </div>
 
       {/* Search bar */}
-      <div className="relative mb-3">
+      <div className="flex items-center gap-2 mb-3">
         <svg
-          className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted"
+          className="w-4 h-4 text-muted flex-shrink-0"
           fill="none"
           stroke="currentColor"
           viewBox="0 0 24 24"
@@ -102,10 +107,10 @@ export default function ChallengeList({
         </svg>
         <input
           type="text"
-          placeholder="Search challenges..."
+          placeholder="Search Challenges..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full bg-surface-overlay border border-surface-hover rounded-lg py-2 pl-10 pr-4 text-sm text-heading placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all"
+          className="flex-1 min-w-0 bg-transparent border-b border-muted/30 py-0.5 text-sm text-heading placeholder:text-muted/40 focus:outline-none focus:border-accent transition-all"
         />
       </div>
 

@@ -162,12 +162,7 @@ export default function Home() {
     [challenges]
   );
 
-  const allChallenges = useMemo(
-    () => challenges.filter((c) => c.status !== "expired"),
-    [challenges]
-  );
-
-  const displayedChallenges = view === "trending" ? allChallenges : library;
+  const displayedChallenges = view === "trending" ? challenges : library;
 
   if (loading) {
     return (
@@ -454,22 +449,22 @@ export default function Home() {
                       <div className="border-t border-surface-hover" />
 
                       <div className="max-w-md mx-auto space-y-6">
-                      <div>
-                        <label className="block text-xs font-semibold uppercase tracking-wider text-muted mb-1.5">
-                          Team Name
+                      <div className="flex items-baseline gap-1.5">
+                        <label className="text-sm font-semibold text-muted whitespace-nowrap">
+                          Team Name:
                         </label>
                         <input
                           type="text"
                           placeholder="Enter your team name..."
                           value={teamName}
                           onChange={(e) => setTeamName(e.target.value)}
-                          className="w-full bg-surface-overlay border border-surface-hover rounded-lg py-2.5 px-4 text-sm text-heading placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all"
+                          className="flex-1 min-w-0 bg-transparent border-b border-muted/30 py-0.5 text-sm text-heading placeholder:text-muted/40 focus:outline-none focus:border-accent transition-all"
                         />
                       </div>
 
                       <div>
-                        <label className="block text-xs font-semibold uppercase tracking-wider text-muted mb-2">
-                          Select Agent
+                        <label className="block text-xs font-semibold text-muted mb-2">
+                          Select Agent:
                         </label>
                         <div className="space-y-2">
                           <button
@@ -477,7 +472,7 @@ export default function Home() {
                             onClick={() => setAgentChoice("mock/golden")}
                             className={`w-full text-left p-4 rounded-xl border transition-all ${
                               agentChoice === "mock/golden"
-                                ? "border-accent bg-accent/5 ring-1 ring-accent/20"
+                                ? "border-accent"
                                 : "border-surface-hover hover:border-accent/30"
                             }`}
                           >
@@ -492,7 +487,7 @@ export default function Home() {
                             onClick={() => setAgentChoice("nathanm1307/student-submissionv:v10")}
                             className={`w-full text-left p-4 rounded-xl border transition-all ${
                               agentChoice === "nathanm1307/student-submissionv:v10"
-                                ? "border-accent bg-accent/5 ring-1 ring-accent/20"
+                                ? "border-accent"
                                 : "border-surface-hover hover:border-accent/30"
                             }`}
                           >
@@ -502,30 +497,29 @@ export default function Home() {
                             </p>
                           </button>
 
-                          <button
-                            type="button"
+                          <div
                             onClick={() => setAgentChoice("custom")}
-                            className={`w-full text-left p-4 rounded-xl border transition-all ${
+                            className={`w-full text-left p-4 rounded-xl border transition-all cursor-pointer ${
                               agentChoice === "custom"
-                                ? "border-accent bg-accent/5 ring-1 ring-accent/20"
+                                ? "border-accent"
                                 : "border-surface-hover hover:border-accent/30"
                             }`}
                           >
-                            <p className="text-sm font-semibold text-heading">Independent Submission</p>
-                            <p className="text-xs text-muted mt-0.5">
-                              Submit your own Docker Hub image tag
-                            </p>
-                            {agentChoice === "custom" && (
+                            <div className="flex items-baseline gap-1.5">
+                              <p className="text-sm font-semibold text-heading whitespace-nowrap">Independent Submission:</p>
                               <input
                                 type="text"
                                 placeholder="your-username/agent:v1"
                                 value={customTag}
-                                onChange={(e) => setCustomTag(e.target.value)}
-                                onClick={(e) => e.stopPropagation()}
-                                className="mt-3 w-full bg-white border border-surface-hover rounded-lg py-2 px-3 text-sm text-heading placeholder:text-muted focus:outline-none focus:ring-2 focus:ring-accent/30 focus:border-accent transition-all font-mono"
+                                onChange={(e) => {
+                                  setCustomTag(e.target.value);
+                                  setAgentChoice("custom");
+                                }}
+                                onFocus={() => setAgentChoice("custom")}
+                                className="flex-1 min-w-0 bg-transparent border-b border-muted/30 py-0.5 text-sm text-heading placeholder:text-muted/40 focus:outline-none focus:border-accent transition-all font-mono"
                               />
-                            )}
-                          </button>
+                            </div>
+                          </div>
                         </div>
                       </div>
 
