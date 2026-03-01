@@ -26,14 +26,13 @@ function useOS(): "mac" | "windows" | "unknown" {
 export default function PostChallengePanel({ onContinue }: PostChallengePanelProps) {
   const os = useOS();
 
-  // Placeholder URLs — replace with real ones later
-  const repoZipUrl = "#PLACEHOLDER_REPO_ZIP_URL";
+  const repoUrl = "https://github.com/fundav/raikes-hacks-company-repo.git";
   const executableUrl =
     os === "mac"
-      ? "#PLACEHOLDER_MAC_EXECUTABLE_URL"
-      : "#PLACEHOLDER_WINDOWS_EXECUTABLE_URL";
+      ? "/downloads/orchestrator"
+      : "/downloads/orchestrator.exe";
   const executableLabel =
-    os === "mac" ? "macOS executable" : os === "windows" ? "Windows executable" : "Executable";
+    os === "mac" ? "macOS orchestrator" : os === "windows" ? "Windows orchestrator" : "Orchestrator";
 
   return (
     <div className="flex flex-col h-full">
@@ -45,18 +44,19 @@ export default function PostChallengePanel({ onContinue }: PostChallengePanelPro
       </div>
 
       <div className="flex-1 p-6 space-y-5">
-        {/* 1. Repo ZIP download link */}
+        {/* 1. Repo link */}
         <div>
             <p className="text-sm font-semibold text-heading">Starter Repository</p>
             <p className="text-xs text-muted mt-0.5 mb-1.5">
-              Download the zipped starter repo template
+              Clone or browse the starter repo on GitHub
             </p>
             <a
-              href={repoZipUrl}
-              download
+              href={repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm text-accent underline underline-offset-2 hover:text-accent-dim transition-colors"
             >
-              Download .zip
+              View on GitHub
             </a>
         </div>
 

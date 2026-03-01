@@ -98,6 +98,18 @@ function formatTime(seconds: number): string {
   return `${m}m ${String(s).padStart(2, "0")}s`;
 }
 
+function isPlayer(tag: string): boolean {
+  return !tag.startsWith("mock/") || tag === "mock/golden";
+}
+
+function calculateScore(entry: LeaderboardEntry): number {
+  const passRate = entry.total_submissions > 0 ? entry.passed / entry.total_submissions : 0;
+  const passScore = passRate * 500;
+  const timeScore = Math.max(0, 300 - (entry.avg_execution_time / 300) * 300);
+  const tokenScore = Math.max(0, 200 - (entry.avg_tokens_used / 50000) * 200);
+  return Math.round(passScore + timeScore + tokenScore);
+}
+
 function isAgenticDebugging(challenge: Challenge): boolean {
   return challenge.title === "Agentic Debugging Assistant" && challenge.company === "Creevo";
 }
@@ -109,6 +121,19 @@ export default function Home() {
   const [activeTab, setActiveTab] = useState<Tab>("Request");
   const [loading, setLoading] = useState(true);
   const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
+  const [submittedChallenges, setSubmittedChallenges] = useState<Set<string>>(() => {
+    if (typeof window === "undefined") return new Set();
+    try {
+      const stored = localStorage.getItem("submittedChallenges");
+      return stored ? new Set(JSON.parse(stored)) : new Set();
+    } catch {
+      return new Set();
+    }
+  });
+  const [submitting, setSubmitting] = useState(false);
+  const [agentChoice, setAgentChoice] = useState<"mock/golden" | "nathanm1307/student-submissionv:v10" | "custom">("mock/golden");
+  const [customTag, setCustomTag] = useState("");
+  const [teamName, setTeamName] = useState("");
 
   useEffect(() => {
     fetchChallenges().then((data) => {
@@ -137,12 +162,7 @@ export default function Home() {
     [challenges]
   );
 
-  const allChallenges = useMemo(
-    () => challenges.filter((c) => c.status !== "expired"),
-    [challenges]
-  );
-
-  const displayedChallenges = view === "trending" ? allChallenges : library;
+  const displayedChallenges = view === "trending" ? challenges : library;
 
   if (loading) {
     return (
@@ -246,20 +266,23 @@ export default function Home() {
                         <tr className="bg-surface-overlay text-xs uppercase tracking-wider text-muted">
                           <th className="text-left px-4 py-2.5 font-semibold w-12">#</th>
                           <th className="text-left px-4 py-2.5 font-semibold">Team</th>
+                          <th className="text-right px-4 py-2.5 font-semibold">Score</th>
                           <th className="text-right px-4 py-2.5 font-semibold">Passed</th>
                           <th className="text-right px-4 py-2.5 font-semibold">Avg Time</th>
                           <th className="text-right px-4 py-2.5 font-semibold">Tokens</th>
                         </tr>
                       </thead>
                       <tbody>
-                        {leaderboard.map((entry, i) => {
+                        {[...leaderboard].sort((a, b) => calculateScore(b) - calculateScore(a)).map((entry, i) => {
                           const rank = i + 1;
+                          const you = isPlayer(entry.docker_image_tag);
                           return (
                             <tr
                               key={entry.docker_image_tag}
-                              className="border-t border-surface-hover"
+                              className={`border-t ${you ? "border-accent/30 bg-accent/5 ring-1 ring-accent/20" : "border-surface-hover"}`}
                             >
                               <td className={`px-4 py-2.5 font-bold ${
+                                you ? "text-accent" :
                                 rank === 1 ? "text-yellow-500" :
                                 rank === 2 ? "text-gray-400" :
                                 rank === 3 ? "text-amber-600" : "text-muted"
@@ -267,10 +290,12 @@ export default function Home() {
                                 {rank}
                               </td>
                               <td className={`px-4 py-2.5 font-medium ${
+                                you ? "text-accent" :
                                 rank === 1 ? "text-yellow-500" :
                                 rank === 2 ? "text-gray-400" :
                                 rank === 3 ? "text-amber-600" : "text-heading"
-                              }`}>{entry.docker_image_tag}</td>
+                              }`}>{you ? "YOU" : entry.docker_image_tag}</td>
+                              <td className="px-4 py-2.5 text-right font-bold text-heading">{calculateScore(entry)}</td>
                               <td className="px-4 py-2.5 text-right text-body">{entry.passed}/{entry.total_submissions}</td>
                               <td className="px-4 py-2.5 text-right text-body">{formatTime(entry.avg_execution_time)}</td>
                               <td className="px-4 py-2.5 text-right text-muted">{Math.round(entry.avg_tokens_used).toLocaleString()}</td>
@@ -389,6 +414,150 @@ export default function Home() {
                       </svg>
                     </Link>
                   </div>
+                )}
+
+                {activeTab === "Upload" && selected && (
+                  submittedChallenges.has(selected.id) ? (
+                    <div className="flex flex-col items-center justify-center h-full text-center py-16">
+                      <div className="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center mb-4">
+                        <svg className="w-7 h-7 text-green-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <h3 className="text-lg font-bold text-heading mb-1">Submission Received</h3>
+                      <p className="text-sm text-muted max-w-sm">
+                        Your agent has been submitted and is being evaluated. Check the Leader Board tab for results.
+                      </p>
+                    </div>
+                  ) : (
+                    <div className="space-y-6">
+                      <div className="space-y-4 text-sm text-body">
+                        <div className="flex gap-3">
+                          <span className="text-accent font-bold flex-shrink-0">1.</span>
+                          <p><span className="font-semibold text-heading">Code:</span> Write your agent logic inside the provided template. <span className="font-semibold text-heading">Never hardcode API keys;</span> our orchestrator securely injects them at runtime.</p>
+                        </div>
+                        <div className="flex gap-3">
+                          <span className="text-accent font-bold flex-shrink-0">2.</span>
+                          <p><span className="font-semibold text-heading">Containerize:</span> Build and push your agent to Docker Hub: <code className="px-1.5 py-0.5 rounded bg-surface-overlay text-xs font-mono">docker build -t your-username/agent:v1 . && docker push your-username/agent:v1</code></p>
+                        </div>
+                        <div className="flex gap-3">
+                          <span className="text-accent font-bold flex-shrink-0">3.</span>
+                          <p><span className="font-semibold text-heading">Submit:</span> Paste your exact Docker Hub image tag (<code className="px-1.5 py-0.5 rounded bg-surface-overlay text-xs font-mono">your-username/agent:v1</code>) into the Bounty Bot web portal to enter the execution queue.</p>
+                        </div>
+                      </div>
+
+                      <div className="border-t border-surface-hover" />
+
+                      <div className="max-w-md mx-auto space-y-6">
+                      <div className="flex items-baseline gap-1.5">
+                        <label className="text-sm font-semibold text-muted whitespace-nowrap">
+                          Team Name:
+                        </label>
+                        <input
+                          type="text"
+                          placeholder="Enter your team name..."
+                          value={teamName}
+                          onChange={(e) => setTeamName(e.target.value)}
+                          className="flex-1 min-w-0 bg-transparent border-b border-muted/30 py-0.5 text-sm text-heading placeholder:text-muted/40 focus:outline-none focus:border-accent transition-all"
+                        />
+                      </div>
+
+                      <div>
+                        <label className="block text-xs font-semibold text-muted mb-2">
+                          Select Agent:
+                        </label>
+                        <div className="space-y-2">
+                          <button
+                            type="button"
+                            onClick={() => setAgentChoice("mock/golden")}
+                            className={`w-full text-left p-4 rounded-xl border transition-all ${
+                              agentChoice === "mock/golden"
+                                ? "border-accent"
+                                : "border-surface-hover hover:border-accent/30"
+                            }`}
+                          >
+                            <p className="text-sm font-semibold text-heading">Quick Test</p>
+                            <p className="text-xs text-muted mt-0.5">
+                              Run the golden baseline agent — results in under a minute
+                            </p>
+                          </button>
+
+                          <button
+                            type="button"
+                            onClick={() => setAgentChoice("nathanm1307/student-submissionv:v10")}
+                            className={`w-full text-left p-4 rounded-xl border transition-all ${
+                              agentChoice === "nathanm1307/student-submissionv:v10"
+                                ? "border-accent"
+                                : "border-surface-hover hover:border-accent/30"
+                            }`}
+                          >
+                            <p className="text-sm font-semibold text-heading">Full Submission</p>
+                            <p className="text-xs text-muted mt-0.5">
+                              Submit your actual agent — evaluation may take up to 5 minutes
+                            </p>
+                          </button>
+
+                          <div
+                            onClick={() => setAgentChoice("custom")}
+                            className={`w-full text-left p-4 rounded-xl border transition-all cursor-pointer ${
+                              agentChoice === "custom"
+                                ? "border-accent"
+                                : "border-surface-hover hover:border-accent/30"
+                            }`}
+                          >
+                            <div className="flex items-baseline gap-1.5">
+                              <p className="text-sm font-semibold text-heading whitespace-nowrap">Independent Submission:</p>
+                              <input
+                                type="text"
+                                placeholder="your-username/agent:v1"
+                                value={customTag}
+                                onChange={(e) => {
+                                  setCustomTag(e.target.value);
+                                  setAgentChoice("custom");
+                                }}
+                                onFocus={() => setAgentChoice("custom")}
+                                className="flex-1 min-w-0 bg-transparent border-b border-muted/30 py-0.5 text-sm text-heading placeholder:text-muted/40 focus:outline-none focus:border-accent transition-all font-mono"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <button
+                        disabled={submitting || !teamName.trim() || (agentChoice === "custom" && !customTag.trim())}
+                        onClick={async () => {
+                          if (!selected) return;
+                          setSubmitting(true);
+                          try {
+                            const res = await fetch("/api/submissions", {
+                              method: "POST",
+                              headers: { "Content-Type": "application/json" },
+                              body: JSON.stringify({
+                                problem_id: selected.id,
+                                docker_image_tag: agentChoice === "custom" ? customTag.trim() : agentChoice,
+                              }),
+                            });
+                            if (res.ok) {
+                              setSubmittedChallenges((prev) => {
+                                const next = new Set(prev).add(selected.id);
+                                localStorage.setItem("submittedChallenges", JSON.stringify([...next]));
+                                return next;
+                              });
+                              setTeamName("");
+                            }
+                          } catch (err) {
+                            console.error("Submission failed:", err);
+                          } finally {
+                            setSubmitting(false);
+                          }
+                        }}
+                        className="w-full bg-accent text-white text-sm font-medium py-2.5 rounded-lg hover:bg-accent-dim transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                      >
+                        {submitting ? "Submitting..." : "Submit Agent"}
+                      </button>
+                      </div>
+                    </div>
+                  )
                 )}
               </div>
             </>

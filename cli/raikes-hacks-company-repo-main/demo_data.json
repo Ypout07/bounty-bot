@@ -1,0 +1,2238 @@
+{
+  "users": {
+    "ef0e2f75-8243-455e-9a26-03c37af0384f": {
+      "id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "username": "alice",
+      "email": "alice@example.com",
+      "full_name": "Alice Smith",
+      "role": "admin",
+      "created_at": "2026-03-01T06:44:02.525752",
+      "is_active": true,
+      "metadata": {}
+    },
+    "b7e19891-bb86-42ac-8103-ff61dda5b9d0": {
+      "id": "b7e19891-bb86-42ac-8103-ff61dda5b9d0",
+      "username": "bob",
+      "email": "bob@example.com",
+      "full_name": "Bob Jones",
+      "role": "manager",
+      "created_at": "2026-03-01T06:44:02.525795",
+      "is_active": true,
+      "metadata": {}
+    },
+    "0c1d28c0-cc84-411f-9c55-4b0aacfbaeee": {
+      "id": "0c1d28c0-cc84-411f-9c55-4b0aacfbaeee",
+      "username": "carol",
+      "email": "carol@example.com",
+      "full_name": "Carol White",
+      "role": "contributor",
+      "created_at": "2026-03-01T06:44:02.525819",
+      "is_active": true,
+      "metadata": {}
+    },
+    "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7": {
+      "id": "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7",
+      "username": "dave",
+      "email": "dave@example.com",
+      "full_name": "Dave Brown",
+      "role": "contributor",
+      "created_at": "2026-03-01T06:44:02.525838",
+      "is_active": true,
+      "metadata": {}
+    },
+    "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8": {
+      "id": "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8",
+      "username": "eve",
+      "email": "eve@example.com",
+      "full_name": "Eve Davis",
+      "role": "contributor",
+      "created_at": "2026-03-01T06:44:02.525858",
+      "is_active": true,
+      "metadata": {}
+    },
+    "b91debc9-6953-4433-b816-aa2df992abb8": {
+      "id": "b91debc9-6953-4433-b816-aa2df992abb8",
+      "username": "frank",
+      "email": "frank@example.com",
+      "full_name": "Frank Wilson",
+      "role": "contributor",
+      "created_at": "2026-03-01T06:44:02.525877",
+      "is_active": true,
+      "metadata": {}
+    },
+    "4830319b-5456-4f50-8bc3-f4191e7ece2b": {
+      "id": "4830319b-5456-4f50-8bc3-f4191e7ece2b",
+      "username": "grace",
+      "email": "grace@example.com",
+      "full_name": "Grace Moore",
+      "role": "contributor",
+      "created_at": "2026-03-01T06:44:02.525894",
+      "is_active": true,
+      "metadata": {}
+    },
+    "964c611d-9d6b-4415-8ecc-f621d5317a45": {
+      "id": "964c611d-9d6b-4415-8ecc-f621d5317a45",
+      "username": "hector",
+      "email": "hector@example.com",
+      "full_name": "Hector Taylor",
+      "role": "contributor",
+      "created_at": "2026-03-01T06:44:02.525911",
+      "is_active": true,
+      "metadata": {}
+    }
+  },
+  "projects": {
+    "7f84bcee-cb54-42f0-820b-96aeb943a347": {
+      "id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "name": "Backend API",
+      "description": "The Backend API project",
+      "owner_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "created_at": "2026-03-01T06:44:02.525990",
+      "updated_at": "2026-03-01T06:44:02.526041",
+      "is_archived": false,
+      "member_ids": [
+        "ef0e2f75-8243-455e-9a26-03c37af0384f",
+        "b7e19891-bb86-42ac-8103-ff61dda5b9d0",
+        "0c1d28c0-cc84-411f-9c55-4b0aacfbaeee",
+        "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7",
+        "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8",
+        "b91debc9-6953-4433-b816-aa2df992abb8",
+        "4830319b-5456-4f50-8bc3-f4191e7ece2b",
+        "964c611d-9d6b-4415-8ecc-f621d5317a45"
+      ],
+      "tag_ids": [],
+      "settings": {},
+      "default_assignee_id": null
+    },
+    "e05ebf7b-12d9-4312-a4cd-0ddc247834b8": {
+      "id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "name": "Frontend Dashboard",
+      "description": "The Frontend Dashboard project",
+      "owner_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "created_at": "2026-03-01T06:44:02.526056",
+      "updated_at": "2026-03-01T06:44:02.526091",
+      "is_archived": false,
+      "member_ids": [
+        "ef0e2f75-8243-455e-9a26-03c37af0384f",
+        "b7e19891-bb86-42ac-8103-ff61dda5b9d0",
+        "0c1d28c0-cc84-411f-9c55-4b0aacfbaeee",
+        "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7",
+        "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8",
+        "b91debc9-6953-4433-b816-aa2df992abb8",
+        "4830319b-5456-4f50-8bc3-f4191e7ece2b",
+        "964c611d-9d6b-4415-8ecc-f621d5317a45"
+      ],
+      "tag_ids": [],
+      "settings": {},
+      "default_assignee_id": null
+    },
+    "4a619137-628b-4785-994d-121505d1bf13": {
+      "id": "4a619137-628b-4785-994d-121505d1bf13",
+      "name": "Mobile App",
+      "description": "The Mobile App project",
+      "owner_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "created_at": "2026-03-01T06:44:02.526104",
+      "updated_at": "2026-03-01T06:44:02.526134",
+      "is_archived": false,
+      "member_ids": [
+        "ef0e2f75-8243-455e-9a26-03c37af0384f",
+        "b7e19891-bb86-42ac-8103-ff61dda5b9d0",
+        "0c1d28c0-cc84-411f-9c55-4b0aacfbaeee",
+        "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7",
+        "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8",
+        "b91debc9-6953-4433-b816-aa2df992abb8",
+        "4830319b-5456-4f50-8bc3-f4191e7ece2b",
+        "964c611d-9d6b-4415-8ecc-f621d5317a45"
+      ],
+      "tag_ids": [],
+      "settings": {},
+      "default_assignee_id": null
+    }
+  },
+  "tasks": {
+    "6f93bbbc-1d33-4aef-9fbf-71cc64111cbc": {
+      "id": "6f93bbbc-1d33-4aef-9fbf-71cc64111cbc",
+      "title": "Implement user authentication [Bac]",
+      "description": "Detailed description for: Implement user authentication. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "backlog",
+      "priority": 1,
+      "assignee_ids": [
+        "4830319b-5456-4f50-8bc3-f4191e7ece2b"
+      ],
+      "tag_ids": [
+        "71a9b344-684e-4a61-8b38-869fb62e0eed",
+        "0221aa9f-6b18-4e8b-a233-f6882e30ceb1"
+      ],
+      "created_at": "2026-03-01T06:44:02.526466",
+      "updated_at": "2026-03-01T06:44:02.526749",
+      "due_date": "2026-03-30T06:44:02.526139+00:00",
+      "estimated_hours": 3.7,
+      "actual_hours": 2.3,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "91fb2d86-a5c7-43fe-9a55-1d1314ea0768",
+          "author_id": "4830319b-5456-4f50-8bc3-f4191e7ece2b",
+          "content": "@grace this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.526743",
+          "edited_at": null,
+          "mentions": [
+            "4830319b-5456-4f50-8bc3-f4191e7ece2b"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 2,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "2aff068f-a70f-41a0-a7af-f6f34ed1d493": {
+      "id": "2aff068f-a70f-41a0-a7af-f6f34ed1d493",
+      "title": "Fix memory leak in cache layer [Bac]",
+      "description": "Detailed description for: Fix memory leak in cache layer. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "backlog",
+      "priority": 1,
+      "assignee_ids": [
+        "b7e19891-bb86-42ac-8103-ff61dda5b9d0"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.526823",
+      "updated_at": "2026-03-01T06:44:02.526938",
+      "due_date": "2026-03-08T06:44:02.526139+00:00",
+      "estimated_hours": 10.6,
+      "actual_hours": 5.7,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 2,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "70532bed-6bdb-4552-adc0-f3aace1c84ab": {
+      "id": "70532bed-6bdb-4552-adc0-f3aace1c84ab",
+      "title": "Add pagination to list endpoints [Bac]",
+      "description": "Detailed description for: Add pagination to list endpoints. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "todo",
+      "priority": 4,
+      "assignee_ids": [
+        "4830319b-5456-4f50-8bc3-f4191e7ece2b"
+      ],
+      "tag_ids": [
+        "5d3ec6bb-6ae2-4ec2-8545-2036b80467d2"
+      ],
+      "created_at": "2026-03-01T06:44:02.526969",
+      "updated_at": "2026-03-01T06:44:02.527074",
+      "due_date": "2026-03-06T06:44:02.526139+00:00",
+      "estimated_hours": 16.4,
+      "actual_hours": 8.3,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 3,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "27c972d5-4093-4da3-bdce-8f9009a71ff8": {
+      "id": "27c972d5-4093-4da3-bdce-8f9009a71ff8",
+      "title": "Write unit tests for payment module [Bac]",
+      "description": "Detailed description for: Write unit tests for payment module. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "todo",
+      "priority": 3,
+      "assignee_ids": [
+        "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.527101",
+      "updated_at": "2026-03-01T06:44:02.527213",
+      "due_date": "2026-03-18T06:44:02.526139+00:00",
+      "estimated_hours": 2.9,
+      "actual_hours": 2.9,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 3,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "42d26c86-e0e7-44a4-945e-a5a74990fd1d": {
+      "id": "42d26c86-e0e7-44a4-945e-a5a74990fd1d",
+      "title": "Refactor database connection pool [Bac]",
+      "description": "Detailed description for: Refactor database connection pool. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "backlog",
+      "priority": 3,
+      "assignee_ids": [
+        "b91debc9-6953-4433-b816-aa2df992abb8"
+      ],
+      "tag_ids": [
+        "e85cb284-c2c0-488d-8b99-74879d1027ac",
+        "5d3ec6bb-6ae2-4ec2-8545-2036b80467d2"
+      ],
+      "created_at": "2026-03-01T06:44:02.527244",
+      "updated_at": "2026-03-01T06:44:02.527371",
+      "due_date": "2026-03-31T06:44:02.526139+00:00",
+      "estimated_hours": 19.5,
+      "actual_hours": 19.3,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "94c99ed1-1765-4801-b9e6-d2f9a3efa918",
+          "author_id": "b91debc9-6953-4433-b816-aa2df992abb8",
+          "content": "@frank this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.527366",
+          "edited_at": null,
+          "mentions": [
+            "b91debc9-6953-4433-b816-aa2df992abb8"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 1,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "7f30b2ff-a5ee-46e4-af9e-104d0208b0a9": {
+      "id": "7f30b2ff-a5ee-46e4-af9e-104d0208b0a9",
+      "title": "Update dependencies [Bac]",
+      "description": "Detailed description for: Update dependencies. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "cancelled",
+      "priority": 2,
+      "assignee_ids": [
+        "b91debc9-6953-4433-b816-aa2df992abb8"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.527419",
+      "updated_at": "2026-03-01T06:44:02.527519",
+      "due_date": "2026-03-01T06:44:02.526139+00:00",
+      "estimated_hours": 13.6,
+      "actual_hours": 20.4,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 1,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "bbd6f5f1-ab86-4f2f-96c3-b1e117b4e785": {
+      "id": "bbd6f5f1-ab86-4f2f-96c3-b1e117b4e785",
+      "title": "Design onboarding flow [Bac]",
+      "description": "Detailed description for: Design onboarding flow. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "in_review",
+      "priority": 1,
+      "assignee_ids": [
+        "964c611d-9d6b-4415-8ecc-f621d5317a45"
+      ],
+      "tag_ids": [
+        "e85cb284-c2c0-488d-8b99-74879d1027ac"
+      ],
+      "created_at": "2026-03-01T06:44:02.527546",
+      "updated_at": "2026-03-01T06:44:02.527658",
+      "due_date": "2026-03-18T06:44:02.526139+00:00",
+      "estimated_hours": 16.8,
+      "actual_hours": 12.0,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "66c395b4-a696-481e-8c6b-3422c9807e73",
+          "author_id": "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8",
+          "content": "@hector this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.527655",
+          "edited_at": null,
+          "mentions": [
+            "964c611d-9d6b-4415-8ecc-f621d5317a45"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 13,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "12499e56-3699-4843-a0fd-a7d4c807064a": {
+      "id": "12499e56-3699-4843-a0fd-a7d4c807064a",
+      "title": "Fix broken links in documentation [Bac]",
+      "description": "Detailed description for: Fix broken links in documentation. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "done",
+      "priority": 1,
+      "assignee_ids": [
+        "4830319b-5456-4f50-8bc3-f4191e7ece2b"
+      ],
+      "tag_ids": [
+        "0221aa9f-6b18-4e8b-a233-f6882e30ceb1",
+        "5d3ec6bb-6ae2-4ec2-8545-2036b80467d2"
+      ],
+      "created_at": "2026-03-01T06:44:02.527705",
+      "updated_at": "2026-03-01T06:44:02.527800",
+      "due_date": "2026-03-13T06:44:02.526139+00:00",
+      "estimated_hours": 5.7,
+      "actual_hours": 6.2,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 13,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "cde3a1ed-2f4c-4565-a72b-dd9b48e2aff9": {
+      "id": "cde3a1ed-2f4c-4565-a72b-dd9b48e2aff9",
+      "title": "Add rate limiting middleware [Bac]",
+      "description": "Detailed description for: Add rate limiting middleware. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "cancelled",
+      "priority": 2,
+      "assignee_ids": [
+        "4830319b-5456-4f50-8bc3-f4191e7ece2b"
+      ],
+      "tag_ids": [
+        "47b76036-b612-4ea1-8a13-ebbc01760d0e"
+      ],
+      "created_at": "2026-03-01T06:44:02.527830",
+      "updated_at": "2026-03-01T06:44:02.527952",
+      "due_date": "2026-03-21T06:44:02.526139+00:00",
+      "estimated_hours": 16.6,
+      "actual_hours": 25.7,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "7667dac5-4bf5-4aad-8eb7-ffafe9961c9a",
+          "author_id": "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7",
+          "content": "@grace this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.527949",
+          "edited_at": null,
+          "mentions": [
+            "4830319b-5456-4f50-8bc3-f4191e7ece2b"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 2,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "da5554c6-f626-46f5-8c98-7c769ea1e351": {
+      "id": "da5554c6-f626-46f5-8c98-7c769ea1e351",
+      "title": "Improve error messages [Bac]",
+      "description": "Detailed description for: Improve error messages. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "todo",
+      "priority": 3,
+      "assignee_ids": [
+        "b91debc9-6953-4433-b816-aa2df992abb8"
+      ],
+      "tag_ids": [
+        "e85cb284-c2c0-488d-8b99-74879d1027ac",
+        "ffa49eb6-203a-43b7-b621-c82422a6638e"
+      ],
+      "created_at": "2026-03-01T06:44:02.528001",
+      "updated_at": "2026-03-01T06:44:02.528092",
+      "due_date": "2026-03-11T06:44:02.526139+00:00",
+      "estimated_hours": 9.7,
+      "actual_hours": 8.2,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 13,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "2a1d7355-cd2c-4e78-9bcf-5601d0fe4f5f": {
+      "id": "2a1d7355-cd2c-4e78-9bcf-5601d0fe4f5f",
+      "title": "Set up monitoring alerts [Bac]",
+      "description": "Detailed description for: Set up monitoring alerts. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "cancelled",
+      "priority": 3,
+      "assignee_ids": [
+        "b91debc9-6953-4433-b816-aa2df992abb8"
+      ],
+      "tag_ids": [
+        "e85cb284-c2c0-488d-8b99-74879d1027ac",
+        "5d3ec6bb-6ae2-4ec2-8545-2036b80467d2"
+      ],
+      "created_at": "2026-03-01T06:44:02.528118",
+      "updated_at": "2026-03-01T06:44:02.528209",
+      "due_date": "2026-03-04T06:44:02.526139+00:00",
+      "estimated_hours": 7.9,
+      "actual_hours": 14.2,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 5,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "747dd689-96fc-43ba-a135-a7d4911cbb3d": {
+      "id": "747dd689-96fc-43ba-a135-a7d4911cbb3d",
+      "title": "Optimize slow SQL queries [Bac]",
+      "description": "Detailed description for: Optimize slow SQL queries. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "backlog",
+      "priority": 1,
+      "assignee_ids": [
+        "b7e19891-bb86-42ac-8103-ff61dda5b9d0"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.528241",
+      "updated_at": "2026-03-01T06:44:02.528358",
+      "due_date": "2026-02-28T06:44:02.526139+00:00",
+      "estimated_hours": 4.0,
+      "actual_hours": 5.6,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "c95c769c-019a-4400-befb-3ed6f97025b2",
+          "author_id": "964c611d-9d6b-4415-8ecc-f621d5317a45",
+          "content": "@bob this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.528355",
+          "edited_at": null,
+          "mentions": [
+            "b7e19891-bb86-42ac-8103-ff61dda5b9d0"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 13,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "caa4139a-44a3-4ace-a175-e61e6ccc2c50": {
+      "id": "caa4139a-44a3-4ace-a175-e61e6ccc2c50",
+      "title": "Implement dark mode [Bac]",
+      "description": "Detailed description for: Implement dark mode. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "done",
+      "priority": 3,
+      "assignee_ids": [
+        "b91debc9-6953-4433-b816-aa2df992abb8"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.528402",
+      "updated_at": "2026-03-01T06:44:02.528498",
+      "due_date": "2026-03-30T06:44:02.526139+00:00",
+      "estimated_hours": 14.7,
+      "actual_hours": 20.4,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 13,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "3a0f5a66-70c5-455a-ba78-9ce6810d1bc7": {
+      "id": "3a0f5a66-70c5-455a-ba78-9ce6810d1bc7",
+      "title": "Add export to PDF feature [Bac]",
+      "description": "Detailed description for: Add export to PDF feature. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "backlog",
+      "priority": 3,
+      "assignee_ids": [
+        "964c611d-9d6b-4415-8ecc-f621d5317a45"
+      ],
+      "tag_ids": [
+        "e85cb284-c2c0-488d-8b99-74879d1027ac"
+      ],
+      "created_at": "2026-03-01T06:44:02.528524",
+      "updated_at": "2026-03-01T06:44:02.528616",
+      "due_date": "2026-03-12T06:44:02.526139+00:00",
+      "estimated_hours": 9.6,
+      "actual_hours": 16.7,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 2,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "83b34ab6-6a3e-4869-95d5-c0711b03886b": {
+      "id": "83b34ab6-6a3e-4869-95d5-c0711b03886b",
+      "title": "Fix timezone handling in scheduler [Bac]",
+      "description": "Detailed description for: Fix timezone handling in scheduler. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "done",
+      "priority": 2,
+      "assignee_ids": [
+        "964c611d-9d6b-4415-8ecc-f621d5317a45"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.528640",
+      "updated_at": "2026-03-01T06:44:02.528757",
+      "due_date": "2026-03-08T06:44:02.526139+00:00",
+      "estimated_hours": 6.7,
+      "actual_hours": 8.9,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "a2a4a7cd-d0fc-4033-bcfd-f07c95440804",
+          "author_id": "0c1d28c0-cc84-411f-9c55-4b0aacfbaeee",
+          "content": "@hector this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.528754",
+          "edited_at": null,
+          "mentions": [
+            "964c611d-9d6b-4415-8ecc-f621d5317a45"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 13,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "458465a3-6f31-4a9f-8645-e10de3d0c15f": {
+      "id": "458465a3-6f31-4a9f-8645-e10de3d0c15f",
+      "title": "Write migration script for v2 schema [Bac]",
+      "description": "Detailed description for: Write migration script for v2 schema. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "done",
+      "priority": 1,
+      "assignee_ids": [
+        "b91debc9-6953-4433-b816-aa2df992abb8"
+      ],
+      "tag_ids": [
+        "e85cb284-c2c0-488d-8b99-74879d1027ac"
+      ],
+      "created_at": "2026-03-01T06:44:02.528802",
+      "updated_at": "2026-03-01T06:44:02.528909",
+      "due_date": "2026-03-15T06:44:02.526139+00:00",
+      "estimated_hours": 3.1,
+      "actual_hours": 3.0,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "68940c63-b485-4c5c-a2db-db00429a4a3f",
+          "author_id": "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7",
+          "content": "@frank this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.528906",
+          "edited_at": null,
+          "mentions": [
+            "b91debc9-6953-4433-b816-aa2df992abb8"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 1,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "84ad4e79-8330-4c4e-8ff9-a57e9f846bb0": {
+      "id": "84ad4e79-8330-4c4e-8ff9-a57e9f846bb0",
+      "title": "Add two-factor authentication [Bac]",
+      "description": "Detailed description for: Add two-factor authentication. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "backlog",
+      "priority": 1,
+      "assignee_ids": [
+        "b91debc9-6953-4433-b816-aa2df992abb8"
+      ],
+      "tag_ids": [
+        "e85cb284-c2c0-488d-8b99-74879d1027ac",
+        "47b76036-b612-4ea1-8a13-ebbc01760d0e"
+      ],
+      "created_at": "2026-03-01T06:44:02.528953",
+      "updated_at": "2026-03-01T06:44:02.529048",
+      "due_date": "2026-03-26T06:44:02.526139+00:00",
+      "estimated_hours": 15.6,
+      "actual_hours": 10.4,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 8,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "4e606281-f2e1-4fe7-8983-892d274087b0": {
+      "id": "4e606281-f2e1-4fe7-8983-892d274087b0",
+      "title": "Performance test the API under load [Bac]",
+      "description": "Detailed description for: Performance test the API under load. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "done",
+      "priority": 3,
+      "assignee_ids": [
+        "0c1d28c0-cc84-411f-9c55-4b0aacfbaeee"
+      ],
+      "tag_ids": [
+        "e85cb284-c2c0-488d-8b99-74879d1027ac",
+        "0221aa9f-6b18-4e8b-a233-f6882e30ceb1"
+      ],
+      "created_at": "2026-03-01T06:44:02.529074",
+      "updated_at": "2026-03-01T06:44:02.529196",
+      "due_date": "2026-03-15T06:44:02.526139+00:00",
+      "estimated_hours": 15.4,
+      "actual_hours": 21.4,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "ce2940ea-1084-40e5-83fa-acfcc11a171e",
+          "author_id": "b91debc9-6953-4433-b816-aa2df992abb8",
+          "content": "@carol this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.529192",
+          "edited_at": null,
+          "mentions": [
+            "0c1d28c0-cc84-411f-9c55-4b0aacfbaeee"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 8,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "0b949fac-411f-4e32-89ab-0ad529553dc9": {
+      "id": "0b949fac-411f-4e32-89ab-0ad529553dc9",
+      "title": "Implement webhook delivery system [Bac]",
+      "description": "Detailed description for: Implement webhook delivery system. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "backlog",
+      "priority": 4,
+      "assignee_ids": [
+        "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.529242",
+      "updated_at": "2026-03-01T06:44:02.529352",
+      "due_date": "2026-03-31T06:44:02.526139+00:00",
+      "estimated_hours": 2.2,
+      "actual_hours": 1.2,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "414837ad-577b-42d4-8148-7682aabfa063",
+          "author_id": "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7",
+          "content": "@eve this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.529349",
+          "edited_at": null,
+          "mentions": [
+            "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 2,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "9755ff43-187f-4a01-8556-cd458d73ed1a": {
+      "id": "9755ff43-187f-4a01-8556-cd458d73ed1a",
+      "title": "Clean up legacy feature flags [Bac]",
+      "description": "Detailed description for: Clean up legacy feature flags. This task involves careful analysis and implementation.",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "cancelled",
+      "priority": 1,
+      "assignee_ids": [
+        "b7e19891-bb86-42ac-8103-ff61dda5b9d0"
+      ],
+      "tag_ids": [
+        "47b76036-b612-4ea1-8a13-ebbc01760d0e",
+        "0221aa9f-6b18-4e8b-a233-f6882e30ceb1"
+      ],
+      "created_at": "2026-03-01T06:44:02.529395",
+      "updated_at": "2026-03-01T06:44:02.529494",
+      "due_date": "2026-02-28T06:44:02.526139+00:00",
+      "estimated_hours": 18.2,
+      "actual_hours": 29.4,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 1,
+      "sprint_id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98"
+    },
+    "25e42cec-5e96-4de7-9f6b-cb1e83f96e32": {
+      "id": "25e42cec-5e96-4de7-9f6b-cb1e83f96e32",
+      "title": "Implement user authentication [Fro]",
+      "description": "Detailed description for: Implement user authentication. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "todo",
+      "priority": 4,
+      "assignee_ids": [
+        "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7"
+      ],
+      "tag_ids": [
+        "0221aa9f-6b18-4e8b-a233-f6882e30ceb1",
+        "5d3ec6bb-6ae2-4ec2-8545-2036b80467d2"
+      ],
+      "created_at": "2026-03-01T06:44:02.529537",
+      "updated_at": "2026-03-01T06:44:02.529656",
+      "due_date": "2026-03-22T06:44:02.526139+00:00",
+      "estimated_hours": 10.0,
+      "actual_hours": 15.2,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "b9dba859-4eba-42a1-9c7f-9e90f9d1f2c9",
+          "author_id": "b7e19891-bb86-42ac-8103-ff61dda5b9d0",
+          "content": "@dave this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.529653",
+          "edited_at": null,
+          "mentions": [
+            "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 8,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "5b8cd6d1-ca4a-4015-8c0c-ba1688183e37": {
+      "id": "5b8cd6d1-ca4a-4015-8c0c-ba1688183e37",
+      "title": "Fix memory leak in cache layer [Fro]",
+      "description": "Detailed description for: Fix memory leak in cache layer. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "in_progress",
+      "priority": 4,
+      "assignee_ids": [
+        "4830319b-5456-4f50-8bc3-f4191e7ece2b"
+      ],
+      "tag_ids": [
+        "e85cb284-c2c0-488d-8b99-74879d1027ac"
+      ],
+      "created_at": "2026-03-01T06:44:02.529703",
+      "updated_at": "2026-03-01T06:44:02.529814",
+      "due_date": "2026-03-02T06:44:02.526139+00:00",
+      "estimated_hours": 17.4,
+      "actual_hours": 9.9,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "4916d65c-be8a-4c90-b255-46ee2cbdccb2",
+          "author_id": "b91debc9-6953-4433-b816-aa2df992abb8",
+          "content": "@grace this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.529811",
+          "edited_at": null,
+          "mentions": [
+            "4830319b-5456-4f50-8bc3-f4191e7ece2b"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 5,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "8fbdd5eb-be0e-4fd9-8cad-e108ccff4839": {
+      "id": "8fbdd5eb-be0e-4fd9-8cad-e108ccff4839",
+      "title": "Add pagination to list endpoints [Fro]",
+      "description": "Detailed description for: Add pagination to list endpoints. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "todo",
+      "priority": 1,
+      "assignee_ids": [
+        "964c611d-9d6b-4415-8ecc-f621d5317a45"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.529860",
+      "updated_at": "2026-03-01T06:44:02.529981",
+      "due_date": "2026-03-07T06:44:02.526139+00:00",
+      "estimated_hours": 11.2,
+      "actual_hours": 7.6,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "70387b63-8cdd-4178-bb74-2680a1a64442",
+          "author_id": "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7",
+          "content": "@hector this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.529977",
+          "edited_at": null,
+          "mentions": [
+            "964c611d-9d6b-4415-8ecc-f621d5317a45"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 2,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "a5c923ee-a999-41c8-b101-8a17726d3fc6": {
+      "id": "a5c923ee-a999-41c8-b101-8a17726d3fc6",
+      "title": "Write unit tests for payment module [Fro]",
+      "description": "Detailed description for: Write unit tests for payment module. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "in_review",
+      "priority": 1,
+      "assignee_ids": [
+        "964c611d-9d6b-4415-8ecc-f621d5317a45"
+      ],
+      "tag_ids": [
+        "47b76036-b612-4ea1-8a13-ebbc01760d0e",
+        "ffa49eb6-203a-43b7-b621-c82422a6638e"
+      ],
+      "created_at": "2026-03-01T06:44:02.530026",
+      "updated_at": "2026-03-01T06:44:02.530121",
+      "due_date": "2026-03-01T06:44:02.526139+00:00",
+      "estimated_hours": 20.0,
+      "actual_hours": 31.7,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 13,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "18f3ab44-89c2-460b-9d48-592f1b9476c4": {
+      "id": "18f3ab44-89c2-460b-9d48-592f1b9476c4",
+      "title": "Refactor database connection pool [Fro]",
+      "description": "Detailed description for: Refactor database connection pool. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "todo",
+      "priority": 2,
+      "assignee_ids": [
+        "964c611d-9d6b-4415-8ecc-f621d5317a45"
+      ],
+      "tag_ids": [
+        "e85cb284-c2c0-488d-8b99-74879d1027ac"
+      ],
+      "created_at": "2026-03-01T06:44:02.530146",
+      "updated_at": "2026-03-01T06:44:02.530259",
+      "due_date": "2026-02-27T06:44:02.526139+00:00",
+      "estimated_hours": 5.1,
+      "actual_hours": 5.2,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "07bde89c-7370-4105-9a97-2c13a91d75d4",
+          "author_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+          "content": "@hector this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.530256",
+          "edited_at": null,
+          "mentions": [
+            "964c611d-9d6b-4415-8ecc-f621d5317a45"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 5,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "5ff233fc-f26e-4236-9128-305a9f0045fb": {
+      "id": "5ff233fc-f26e-4236-9128-305a9f0045fb",
+      "title": "Update dependencies [Fro]",
+      "description": "Detailed description for: Update dependencies. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "in_review",
+      "priority": 3,
+      "assignee_ids": [
+        "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8"
+      ],
+      "tag_ids": [
+        "e85cb284-c2c0-488d-8b99-74879d1027ac"
+      ],
+      "created_at": "2026-03-01T06:44:02.530313",
+      "updated_at": "2026-03-01T06:44:02.530405",
+      "due_date": "2026-03-31T06:44:02.526139+00:00",
+      "estimated_hours": 19.2,
+      "actual_hours": 34.4,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 13,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "f0bcdfa8-0a67-4dad-99cf-4267fdad23c9": {
+      "id": "f0bcdfa8-0a67-4dad-99cf-4267fdad23c9",
+      "title": "Design onboarding flow [Fro]",
+      "description": "Detailed description for: Design onboarding flow. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "todo",
+      "priority": 2,
+      "assignee_ids": [
+        "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8"
+      ],
+      "tag_ids": [
+        "0221aa9f-6b18-4e8b-a233-f6882e30ceb1"
+      ],
+      "created_at": "2026-03-01T06:44:02.530432",
+      "updated_at": "2026-03-01T06:44:02.530542",
+      "due_date": "2026-03-16T06:44:02.526139+00:00",
+      "estimated_hours": 12.0,
+      "actual_hours": 14.5,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "157299af-1d39-4137-8573-c13136cfc3ef",
+          "author_id": "964c611d-9d6b-4415-8ecc-f621d5317a45",
+          "content": "@eve this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.530539",
+          "edited_at": null,
+          "mentions": [
+            "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 1,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "61249fdd-3735-4fb9-bbbb-fde59996af12": {
+      "id": "61249fdd-3735-4fb9-bbbb-fde59996af12",
+      "title": "Fix broken links in documentation [Fro]",
+      "description": "Detailed description for: Fix broken links in documentation. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "backlog",
+      "priority": 2,
+      "assignee_ids": [
+        "b91debc9-6953-4433-b816-aa2df992abb8"
+      ],
+      "tag_ids": [
+        "47b76036-b612-4ea1-8a13-ebbc01760d0e",
+        "0221aa9f-6b18-4e8b-a233-f6882e30ceb1"
+      ],
+      "created_at": "2026-03-01T06:44:02.530586",
+      "updated_at": "2026-03-01T06:44:02.530690",
+      "due_date": "2026-03-11T06:44:02.526139+00:00",
+      "estimated_hours": 12.3,
+      "actual_hours": 17.0,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 1,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "846f2b35-d0f0-4226-b61f-db45040be029": {
+      "id": "846f2b35-d0f0-4226-b61f-db45040be029",
+      "title": "Add rate limiting middleware [Fro]",
+      "description": "Detailed description for: Add rate limiting middleware. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "done",
+      "priority": 2,
+      "assignee_ids": [
+        "b91debc9-6953-4433-b816-aa2df992abb8"
+      ],
+      "tag_ids": [
+        "47b76036-b612-4ea1-8a13-ebbc01760d0e",
+        "5d3ec6bb-6ae2-4ec2-8545-2036b80467d2"
+      ],
+      "created_at": "2026-03-01T06:44:02.530715",
+      "updated_at": "2026-03-01T06:44:02.530828",
+      "due_date": "2026-03-29T06:44:02.526139+00:00",
+      "estimated_hours": 9.0,
+      "actual_hours": 11.3,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "bac5d94b-3e9a-4651-8111-cca25043d3f0",
+          "author_id": "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8",
+          "content": "@frank this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.530826",
+          "edited_at": null,
+          "mentions": [
+            "b91debc9-6953-4433-b816-aa2df992abb8"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 1,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "9bdcb843-8fe5-4760-8936-168168c19f09": {
+      "id": "9bdcb843-8fe5-4760-8936-168168c19f09",
+      "title": "Improve error messages [Fro]",
+      "description": "Detailed description for: Improve error messages. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "todo",
+      "priority": 3,
+      "assignee_ids": [
+        "0c1d28c0-cc84-411f-9c55-4b0aacfbaeee"
+      ],
+      "tag_ids": [
+        "e85cb284-c2c0-488d-8b99-74879d1027ac"
+      ],
+      "created_at": "2026-03-01T06:44:02.530871",
+      "updated_at": "2026-03-01T06:44:02.530963",
+      "due_date": "2026-03-16T06:44:02.526139+00:00",
+      "estimated_hours": 13.8,
+      "actual_hours": 12.2,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 2,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "e10d97ff-d763-4057-ab53-30820a2bb155": {
+      "id": "e10d97ff-d763-4057-ab53-30820a2bb155",
+      "title": "Set up monitoring alerts [Fro]",
+      "description": "Detailed description for: Set up monitoring alerts. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "in_review",
+      "priority": 1,
+      "assignee_ids": [
+        "b7e19891-bb86-42ac-8103-ff61dda5b9d0"
+      ],
+      "tag_ids": [
+        "5d3ec6bb-6ae2-4ec2-8545-2036b80467d2",
+        "47b76036-b612-4ea1-8a13-ebbc01760d0e"
+      ],
+      "created_at": "2026-03-01T06:44:02.530988",
+      "updated_at": "2026-03-01T06:44:02.531086",
+      "due_date": "2026-03-04T06:44:02.526139+00:00",
+      "estimated_hours": 11.2,
+      "actual_hours": 13.0,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 1,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "92b46e91-aafe-4493-9c91-c50449a86e87": {
+      "id": "92b46e91-aafe-4493-9c91-c50449a86e87",
+      "title": "Optimize slow SQL queries [Fro]",
+      "description": "Detailed description for: Optimize slow SQL queries. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "in_progress",
+      "priority": 2,
+      "assignee_ids": [
+        "b7e19891-bb86-42ac-8103-ff61dda5b9d0"
+      ],
+      "tag_ids": [
+        "0221aa9f-6b18-4e8b-a233-f6882e30ceb1"
+      ],
+      "created_at": "2026-03-01T06:44:02.531112",
+      "updated_at": "2026-03-01T06:44:02.531235",
+      "due_date": "2026-03-29T06:44:02.526139+00:00",
+      "estimated_hours": 16.8,
+      "actual_hours": 23.8,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "a272c04c-1ebe-4116-9793-007ca72ad617",
+          "author_id": "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8",
+          "content": "@bob this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.531232",
+          "edited_at": null,
+          "mentions": [
+            "b7e19891-bb86-42ac-8103-ff61dda5b9d0"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 5,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "5ade2d6d-e545-4c5c-9261-75a7492fd8ea": {
+      "id": "5ade2d6d-e545-4c5c-9261-75a7492fd8ea",
+      "title": "Implement dark mode [Fro]",
+      "description": "Detailed description for: Implement dark mode. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "todo",
+      "priority": 1,
+      "assignee_ids": [
+        "4830319b-5456-4f50-8bc3-f4191e7ece2b"
+      ],
+      "tag_ids": [
+        "47b76036-b612-4ea1-8a13-ebbc01760d0e"
+      ],
+      "created_at": "2026-03-01T06:44:02.531282",
+      "updated_at": "2026-03-01T06:44:02.531372",
+      "due_date": "2026-03-14T06:44:02.526139+00:00",
+      "estimated_hours": 15.1,
+      "actual_hours": 10.6,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 1,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "b41b6a73-1f6d-4786-b037-ea0555b00c60": {
+      "id": "b41b6a73-1f6d-4786-b037-ea0555b00c60",
+      "title": "Add export to PDF feature [Fro]",
+      "description": "Detailed description for: Add export to PDF feature. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "todo",
+      "priority": 3,
+      "assignee_ids": [
+        "4830319b-5456-4f50-8bc3-f4191e7ece2b"
+      ],
+      "tag_ids": [
+        "ffa49eb6-203a-43b7-b621-c82422a6638e",
+        "71a9b344-684e-4a61-8b38-869fb62e0eed"
+      ],
+      "created_at": "2026-03-01T06:44:02.531397",
+      "updated_at": "2026-03-01T06:44:02.531509",
+      "due_date": "2026-02-27T06:44:02.526139+00:00",
+      "estimated_hours": 10.3,
+      "actual_hours": 17.2,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "8ac1e398-4a6c-4c71-8437-046088cbcb70",
+          "author_id": "4830319b-5456-4f50-8bc3-f4191e7ece2b",
+          "content": "@grace this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.531506",
+          "edited_at": null,
+          "mentions": [
+            "4830319b-5456-4f50-8bc3-f4191e7ece2b"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 8,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "e45550da-8322-49a9-88e2-2b71ef352fd3": {
+      "id": "e45550da-8322-49a9-88e2-2b71ef352fd3",
+      "title": "Fix timezone handling in scheduler [Fro]",
+      "description": "Detailed description for: Fix timezone handling in scheduler. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "backlog",
+      "priority": 3,
+      "assignee_ids": [
+        "964c611d-9d6b-4415-8ecc-f621d5317a45"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.531555",
+      "updated_at": "2026-03-01T06:44:02.531663",
+      "due_date": "2026-03-12T06:44:02.526139+00:00",
+      "estimated_hours": 15.7,
+      "actual_hours": 20.8,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "211ec8cf-0d31-40ef-b047-46f61f03e520",
+          "author_id": "964c611d-9d6b-4415-8ecc-f621d5317a45",
+          "content": "@hector this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.531660",
+          "edited_at": null,
+          "mentions": [
+            "964c611d-9d6b-4415-8ecc-f621d5317a45"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 3,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "415bc27f-9bed-4dc5-85b7-bbea5dd8bcf6": {
+      "id": "415bc27f-9bed-4dc5-85b7-bbea5dd8bcf6",
+      "title": "Write migration script for v2 schema [Fro]",
+      "description": "Detailed description for: Write migration script for v2 schema. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "done",
+      "priority": 4,
+      "assignee_ids": [
+        "b91debc9-6953-4433-b816-aa2df992abb8"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.531704",
+      "updated_at": "2026-03-01T06:44:02.531799",
+      "due_date": "2026-03-05T06:44:02.526139+00:00",
+      "estimated_hours": 2.4,
+      "actual_hours": 4.0,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 1,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "841aef7c-1ffc-4769-b46a-6fa4b8d994b8": {
+      "id": "841aef7c-1ffc-4769-b46a-6fa4b8d994b8",
+      "title": "Add two-factor authentication [Fro]",
+      "description": "Detailed description for: Add two-factor authentication. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "done",
+      "priority": 3,
+      "assignee_ids": [
+        "964c611d-9d6b-4415-8ecc-f621d5317a45"
+      ],
+      "tag_ids": [
+        "0221aa9f-6b18-4e8b-a233-f6882e30ceb1",
+        "e85cb284-c2c0-488d-8b99-74879d1027ac"
+      ],
+      "created_at": "2026-03-01T06:44:02.531830",
+      "updated_at": "2026-03-01T06:44:02.531924",
+      "due_date": "2026-02-26T06:44:02.526139+00:00",
+      "estimated_hours": 1.8,
+      "actual_hours": 1.7,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 2,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "55d6b135-71ee-4d5a-af82-c572b95189a6": {
+      "id": "55d6b135-71ee-4d5a-af82-c572b95189a6",
+      "title": "Performance test the API under load [Fro]",
+      "description": "Detailed description for: Performance test the API under load. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "cancelled",
+      "priority": 2,
+      "assignee_ids": [
+        "0c1d28c0-cc84-411f-9c55-4b0aacfbaeee"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.531953",
+      "updated_at": "2026-03-01T06:44:02.532044",
+      "due_date": "2026-03-22T06:44:02.526139+00:00",
+      "estimated_hours": 15.8,
+      "actual_hours": 26.1,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 3,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "fd74f1bd-386e-4a2b-b59d-9abc7f459862": {
+      "id": "fd74f1bd-386e-4a2b-b59d-9abc7f459862",
+      "title": "Implement webhook delivery system [Fro]",
+      "description": "Detailed description for: Implement webhook delivery system. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "todo",
+      "priority": 2,
+      "assignee_ids": [
+        "4830319b-5456-4f50-8bc3-f4191e7ece2b"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.532069",
+      "updated_at": "2026-03-01T06:44:02.532161",
+      "due_date": "2026-03-17T06:44:02.526139+00:00",
+      "estimated_hours": 17.7,
+      "actual_hours": 9.4,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 2,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "6430d1e5-a13d-4e7e-8945-b0057b3a2366": {
+      "id": "6430d1e5-a13d-4e7e-8945-b0057b3a2366",
+      "title": "Clean up legacy feature flags [Fro]",
+      "description": "Detailed description for: Clean up legacy feature flags. This task involves careful analysis and implementation.",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "in_progress",
+      "priority": 2,
+      "assignee_ids": [
+        "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.532185",
+      "updated_at": "2026-03-01T06:44:02.532303",
+      "due_date": "2026-03-26T06:44:02.526139+00:00",
+      "estimated_hours": 3.1,
+      "actual_hours": 5.0,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "8ff7bdb6-5b3a-400c-bc26-a6cded4bd2b5",
+          "author_id": "964c611d-9d6b-4415-8ecc-f621d5317a45",
+          "content": "@eve this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.532300",
+          "edited_at": null,
+          "mentions": [
+            "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 13,
+      "sprint_id": "3e888045-08a0-45de-a587-4de2a140f9ae"
+    },
+    "5f04f567-e343-4028-a4bc-8080a63696db": {
+      "id": "5f04f567-e343-4028-a4bc-8080a63696db",
+      "title": "Implement user authentication [Mob]",
+      "description": "Detailed description for: Implement user authentication. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "todo",
+      "priority": 3,
+      "assignee_ids": [
+        "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.532362",
+      "updated_at": "2026-03-01T06:44:02.532454",
+      "due_date": "2026-03-13T06:44:02.526139+00:00",
+      "estimated_hours": 13.5,
+      "actual_hours": 13.8,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 1,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "f2b4017a-7418-4e7f-9d75-cbf2f7aaf200": {
+      "id": "f2b4017a-7418-4e7f-9d75-cbf2f7aaf200",
+      "title": "Fix memory leak in cache layer [Mob]",
+      "description": "Detailed description for: Fix memory leak in cache layer. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "in_progress",
+      "priority": 3,
+      "assignee_ids": [
+        "964c611d-9d6b-4415-8ecc-f621d5317a45"
+      ],
+      "tag_ids": [
+        "5d3ec6bb-6ae2-4ec2-8545-2036b80467d2",
+        "e85cb284-c2c0-488d-8b99-74879d1027ac"
+      ],
+      "created_at": "2026-03-01T06:44:02.532479",
+      "updated_at": "2026-03-01T06:44:02.532593",
+      "due_date": "2026-02-25T06:44:02.526139+00:00",
+      "estimated_hours": 19.6,
+      "actual_hours": 23.5,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "29d80738-c8ae-4f73-9507-e03b61cd6582",
+          "author_id": "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8",
+          "content": "@hector this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.532590",
+          "edited_at": null,
+          "mentions": [
+            "964c611d-9d6b-4415-8ecc-f621d5317a45"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 13,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "2e4a6d7d-5b5f-494f-a229-e57b2363a15c": {
+      "id": "2e4a6d7d-5b5f-494f-a229-e57b2363a15c",
+      "title": "Add pagination to list endpoints [Mob]",
+      "description": "Detailed description for: Add pagination to list endpoints. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "backlog",
+      "priority": 3,
+      "assignee_ids": [
+        "0c1d28c0-cc84-411f-9c55-4b0aacfbaeee"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.532642",
+      "updated_at": "2026-03-01T06:44:02.532738",
+      "due_date": "2026-03-16T06:44:02.526139+00:00",
+      "estimated_hours": 9.3,
+      "actual_hours": 13.4,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 8,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "37442f02-0d5d-45a5-a488-112f08e8c7f8": {
+      "id": "37442f02-0d5d-45a5-a488-112f08e8c7f8",
+      "title": "Write unit tests for payment module [Mob]",
+      "description": "Detailed description for: Write unit tests for payment module. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "in_review",
+      "priority": 1,
+      "assignee_ids": [
+        "b91debc9-6953-4433-b816-aa2df992abb8"
+      ],
+      "tag_ids": [
+        "0221aa9f-6b18-4e8b-a233-f6882e30ceb1",
+        "71a9b344-684e-4a61-8b38-869fb62e0eed"
+      ],
+      "created_at": "2026-03-01T06:44:02.532763",
+      "updated_at": "2026-03-01T06:44:02.532854",
+      "due_date": "2026-03-30T06:44:02.526139+00:00",
+      "estimated_hours": 14.5,
+      "actual_hours": 7.3,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 1,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "13e095b5-23cd-4f4d-be00-c9781410f555": {
+      "id": "13e095b5-23cd-4f4d-be00-c9781410f555",
+      "title": "Refactor database connection pool [Mob]",
+      "description": "Detailed description for: Refactor database connection pool. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "in_progress",
+      "priority": 2,
+      "assignee_ids": [
+        "4830319b-5456-4f50-8bc3-f4191e7ece2b"
+      ],
+      "tag_ids": [
+        "47b76036-b612-4ea1-8a13-ebbc01760d0e"
+      ],
+      "created_at": "2026-03-01T06:44:02.532879",
+      "updated_at": "2026-03-01T06:44:02.532973",
+      "due_date": "2026-03-03T06:44:02.526139+00:00",
+      "estimated_hours": 18.5,
+      "actual_hours": 24.2,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 13,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "c652279e-8e21-4eb4-bdbc-44e0914a3e09": {
+      "id": "c652279e-8e21-4eb4-bdbc-44e0914a3e09",
+      "title": "Update dependencies [Mob]",
+      "description": "Detailed description for: Update dependencies. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "cancelled",
+      "priority": 3,
+      "assignee_ids": [
+        "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7"
+      ],
+      "tag_ids": [
+        "71a9b344-684e-4a61-8b38-869fb62e0eed"
+      ],
+      "created_at": "2026-03-01T06:44:02.532997",
+      "updated_at": "2026-03-01T06:44:02.533088",
+      "due_date": "2026-03-08T06:44:02.526139+00:00",
+      "estimated_hours": 14.2,
+      "actual_hours": 17.4,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 5,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "c053c37b-e7e7-4f89-9aea-4965dad3ddb7": {
+      "id": "c053c37b-e7e7-4f89-9aea-4965dad3ddb7",
+      "title": "Design onboarding flow [Mob]",
+      "description": "Detailed description for: Design onboarding flow. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "done",
+      "priority": 2,
+      "assignee_ids": [
+        "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8"
+      ],
+      "tag_ids": [
+        "71a9b344-684e-4a61-8b38-869fb62e0eed",
+        "e85cb284-c2c0-488d-8b99-74879d1027ac"
+      ],
+      "created_at": "2026-03-01T06:44:02.533114",
+      "updated_at": "2026-03-01T06:44:02.533264",
+      "due_date": "2026-03-09T06:44:02.526139+00:00",
+      "estimated_hours": 16.8,
+      "actual_hours": 15.1,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 8,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "ff197a49-3b83-4796-b737-7d2d73af772f": {
+      "id": "ff197a49-3b83-4796-b737-7d2d73af772f",
+      "title": "Fix broken links in documentation [Mob]",
+      "description": "Detailed description for: Fix broken links in documentation. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "in_review",
+      "priority": 3,
+      "assignee_ids": [
+        "b91debc9-6953-4433-b816-aa2df992abb8"
+      ],
+      "tag_ids": [
+        "e85cb284-c2c0-488d-8b99-74879d1027ac"
+      ],
+      "created_at": "2026-03-01T06:44:02.533309",
+      "updated_at": "2026-03-01T06:44:02.533467",
+      "due_date": "2026-03-06T06:44:02.526139+00:00",
+      "estimated_hours": 5.1,
+      "actual_hours": 5.6,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 13,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "861bee3f-baad-482d-854f-93e0d5d26d68": {
+      "id": "861bee3f-baad-482d-854f-93e0d5d26d68",
+      "title": "Add rate limiting middleware [Mob]",
+      "description": "Detailed description for: Add rate limiting middleware. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "backlog",
+      "priority": 3,
+      "assignee_ids": [
+        "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.533509",
+      "updated_at": "2026-03-01T06:44:02.533676",
+      "due_date": "2026-03-05T06:44:02.526139+00:00",
+      "estimated_hours": 6.9,
+      "actual_hours": 10.7,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "3aec2824-a621-4941-852e-4df3265562eb",
+          "author_id": "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7",
+          "content": "@dave this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.533673",
+          "edited_at": null,
+          "mentions": [
+            "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 13,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "6ef085ad-b8ea-4c56-ab19-8742ace41b09": {
+      "id": "6ef085ad-b8ea-4c56-ab19-8742ace41b09",
+      "title": "Improve error messages [Mob]",
+      "description": "Detailed description for: Improve error messages. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "in_review",
+      "priority": 1,
+      "assignee_ids": [
+        "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8"
+      ],
+      "tag_ids": [
+        "ffa49eb6-203a-43b7-b621-c82422a6638e"
+      ],
+      "created_at": "2026-03-01T06:44:02.533724",
+      "updated_at": "2026-03-01T06:44:02.533834",
+      "due_date": "2026-03-27T06:44:02.526139+00:00",
+      "estimated_hours": 4.7,
+      "actual_hours": 6.6,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "b9991c61-7fde-4c21-8620-9ac97d4663f1",
+          "author_id": "0c1d28c0-cc84-411f-9c55-4b0aacfbaeee",
+          "content": "@eve this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.533831",
+          "edited_at": null,
+          "mentions": [
+            "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 8,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "b113e1f5-4803-49e3-b520-64a15199ae23": {
+      "id": "b113e1f5-4803-49e3-b520-64a15199ae23",
+      "title": "Set up monitoring alerts [Mob]",
+      "description": "Detailed description for: Set up monitoring alerts. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "backlog",
+      "priority": 1,
+      "assignee_ids": [
+        "4830319b-5456-4f50-8bc3-f4191e7ece2b"
+      ],
+      "tag_ids": [
+        "0221aa9f-6b18-4e8b-a233-f6882e30ceb1"
+      ],
+      "created_at": "2026-03-01T06:44:02.533878",
+      "updated_at": "2026-03-01T06:44:02.533993",
+      "due_date": "2026-03-25T06:44:02.526139+00:00",
+      "estimated_hours": 16.3,
+      "actual_hours": 22.9,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "ac664bba-44cc-4f04-b3c3-7f47624db3fd",
+          "author_id": "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7",
+          "content": "@grace this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.533990",
+          "edited_at": null,
+          "mentions": [
+            "4830319b-5456-4f50-8bc3-f4191e7ece2b"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 2,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "92939efe-8b51-466a-8534-eebfd68cd28c": {
+      "id": "92939efe-8b51-466a-8534-eebfd68cd28c",
+      "title": "Optimize slow SQL queries [Mob]",
+      "description": "Detailed description for: Optimize slow SQL queries. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "in_review",
+      "priority": 1,
+      "assignee_ids": [
+        "964c611d-9d6b-4415-8ecc-f621d5317a45"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.534042",
+      "updated_at": "2026-03-01T06:44:02.534132",
+      "due_date": "2026-03-16T06:44:02.526139+00:00",
+      "estimated_hours": 13.7,
+      "actual_hours": 24.4,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 5,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "38ce918a-4d1d-40f4-9f68-17056c2370fb": {
+      "id": "38ce918a-4d1d-40f4-9f68-17056c2370fb",
+      "title": "Implement dark mode [Mob]",
+      "description": "Detailed description for: Implement dark mode. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "done",
+      "priority": 4,
+      "assignee_ids": [
+        "8eb142fe-db30-42d1-b2cf-8393ecb5f4e8"
+      ],
+      "tag_ids": [
+        "0221aa9f-6b18-4e8b-a233-f6882e30ceb1"
+      ],
+      "created_at": "2026-03-01T06:44:02.534158",
+      "updated_at": "2026-03-01T06:44:02.534254",
+      "due_date": "2026-03-11T06:44:02.526139+00:00",
+      "estimated_hours": 17.4,
+      "actual_hours": 18.8,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 13,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "534b6ba2-c508-49d4-9469-7d9bd0ee3895": {
+      "id": "534b6ba2-c508-49d4-9469-7d9bd0ee3895",
+      "title": "Add export to PDF feature [Mob]",
+      "description": "Detailed description for: Add export to PDF feature. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "cancelled",
+      "priority": 4,
+      "assignee_ids": [
+        "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.534303",
+      "updated_at": "2026-03-01T06:44:02.534423",
+      "due_date": "2026-03-11T06:44:02.526139+00:00",
+      "estimated_hours": 9.4,
+      "actual_hours": 13.4,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "b26a8e3c-6c32-4fb2-a9a3-ba2eb70f9a99",
+          "author_id": "b91debc9-6953-4433-b816-aa2df992abb8",
+          "content": "@dave this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.534420",
+          "edited_at": null,
+          "mentions": [
+            "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 3,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "73a8ac92-42a0-47ee-b4f2-7ff87d618556": {
+      "id": "73a8ac92-42a0-47ee-b4f2-7ff87d618556",
+      "title": "Fix timezone handling in scheduler [Mob]",
+      "description": "Detailed description for: Fix timezone handling in scheduler. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "todo",
+      "priority": 1,
+      "assignee_ids": [
+        "b91debc9-6953-4433-b816-aa2df992abb8"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.534466",
+      "updated_at": "2026-03-01T06:44:02.534579",
+      "due_date": "2026-03-09T06:44:02.526139+00:00",
+      "estimated_hours": 8.3,
+      "actual_hours": 5.8,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "1bd6706c-49d8-4407-9456-783af3c25de4",
+          "author_id": "4830319b-5456-4f50-8bc3-f4191e7ece2b",
+          "content": "@frank this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.534576",
+          "edited_at": null,
+          "mentions": [
+            "b91debc9-6953-4433-b816-aa2df992abb8"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 2,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "50ed072a-5d87-4013-96c1-8b52f925d816": {
+      "id": "50ed072a-5d87-4013-96c1-8b52f925d816",
+      "title": "Write migration script for v2 schema [Mob]",
+      "description": "Detailed description for: Write migration script for v2 schema. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "in_review",
+      "priority": 4,
+      "assignee_ids": [
+        "f1a00803-8f8b-4fa5-95aa-4e4dc90e55b7"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.534623",
+      "updated_at": "2026-03-01T06:44:02.534719",
+      "due_date": "2026-02-25T06:44:02.526139+00:00",
+      "estimated_hours": 16.8,
+      "actual_hours": 16.9,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 2,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "1aa3a7e1-f131-45e9-8baa-5efe35b6657a": {
+      "id": "1aa3a7e1-f131-45e9-8baa-5efe35b6657a",
+      "title": "Add two-factor authentication [Mob]",
+      "description": "Detailed description for: Add two-factor authentication. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "in_review",
+      "priority": 4,
+      "assignee_ids": [
+        "964c611d-9d6b-4415-8ecc-f621d5317a45"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.534744",
+      "updated_at": "2026-03-01T06:44:02.534835",
+      "due_date": "2026-03-22T06:44:02.526139+00:00",
+      "estimated_hours": 6.7,
+      "actual_hours": 6.7,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 3,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "288fc24a-b92d-4020-b02a-75554ba00d15": {
+      "id": "288fc24a-b92d-4020-b02a-75554ba00d15",
+      "title": "Performance test the API under load [Mob]",
+      "description": "Detailed description for: Performance test the API under load. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "in_review",
+      "priority": 2,
+      "assignee_ids": [
+        "4830319b-5456-4f50-8bc3-f4191e7ece2b"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.534861",
+      "updated_at": "2026-03-01T06:44:02.534955",
+      "due_date": "2026-03-17T06:44:02.526139+00:00",
+      "estimated_hours": 9.3,
+      "actual_hours": 5.0,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 3,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "2ac6ac84-2184-4cc1-acf0-53070d6d78ce": {
+      "id": "2ac6ac84-2184-4cc1-acf0-53070d6d78ce",
+      "title": "Implement webhook delivery system [Mob]",
+      "description": "Detailed description for: Implement webhook delivery system. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "cancelled",
+      "priority": 4,
+      "assignee_ids": [
+        "964c611d-9d6b-4415-8ecc-f621d5317a45"
+      ],
+      "tag_ids": [],
+      "created_at": "2026-03-01T06:44:02.534978",
+      "updated_at": "2026-03-01T06:44:02.535101",
+      "due_date": "2026-03-30T06:44:02.526139+00:00",
+      "estimated_hours": 18.5,
+      "actual_hours": 32.8,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "e485d93a-4ceb-41de-b043-0e733bff5e5d",
+          "author_id": "4830319b-5456-4f50-8bc3-f4191e7ece2b",
+          "content": "@hector this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.535098",
+          "edited_at": null,
+          "mentions": [
+            "964c611d-9d6b-4415-8ecc-f621d5317a45"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 5,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    },
+    "5d4092c6-86d2-496f-ac13-8d927e80c2ee": {
+      "id": "5d4092c6-86d2-496f-ac13-8d927e80c2ee",
+      "title": "Clean up legacy feature flags [Mob]",
+      "description": "Detailed description for: Clean up legacy feature flags. This task involves careful analysis and implementation.",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "creator_id": "ef0e2f75-8243-455e-9a26-03c37af0384f",
+      "status": "backlog",
+      "priority": 1,
+      "assignee_ids": [
+        "b91debc9-6953-4433-b816-aa2df992abb8"
+      ],
+      "tag_ids": [
+        "e85cb284-c2c0-488d-8b99-74879d1027ac",
+        "0221aa9f-6b18-4e8b-a233-f6882e30ceb1"
+      ],
+      "created_at": "2026-03-01T06:44:02.535148",
+      "updated_at": "2026-03-01T06:44:02.535273",
+      "due_date": "2026-03-16T06:44:02.526139+00:00",
+      "estimated_hours": 4.5,
+      "actual_hours": 3.7,
+      "parent_task_id": null,
+      "subtask_ids": [],
+      "comments": [
+        {
+          "id": "610daa9f-680b-4edc-9bb4-b8b94c630d85",
+          "author_id": "b91debc9-6953-4433-b816-aa2df992abb8",
+          "content": "@frank this looks good, let me know if you need help.",
+          "created_at": "2026-03-01T06:44:02.535270",
+          "edited_at": null,
+          "mentions": [
+            "b91debc9-6953-4433-b816-aa2df992abb8"
+          ]
+        }
+      ],
+      "attachments": [],
+      "watchers": [],
+      "custom_fields": {},
+      "story_points": 5,
+      "sprint_id": "13288204-0973-4361-8a62-022247ceb76d"
+    }
+  },
+  "tags": {
+    "47b76036-b612-4ea1-8a13-ebbc01760d0e": {
+      "id": "47b76036-b612-4ea1-8a13-ebbc01760d0e",
+      "name": "bug",
+      "color": "#ef4444"
+    },
+    "0221aa9f-6b18-4e8b-a233-f6882e30ceb1": {
+      "id": "0221aa9f-6b18-4e8b-a233-f6882e30ceb1",
+      "name": "feature",
+      "color": "#22c55e"
+    },
+    "71a9b344-684e-4a61-8b38-869fb62e0eed": {
+      "id": "71a9b344-684e-4a61-8b38-869fb62e0eed",
+      "name": "documentation",
+      "color": "#3b82f6"
+    },
+    "e85cb284-c2c0-488d-8b99-74879d1027ac": {
+      "id": "e85cb284-c2c0-488d-8b99-74879d1027ac",
+      "name": "chore",
+      "color": "#a855f7"
+    },
+    "5d3ec6bb-6ae2-4ec2-8545-2036b80467d2": {
+      "id": "5d3ec6bb-6ae2-4ec2-8545-2036b80467d2",
+      "name": "performance",
+      "color": "#f59e0b"
+    },
+    "ffa49eb6-203a-43b7-b621-c82422a6638e": {
+      "id": "ffa49eb6-203a-43b7-b621-c82422a6638e",
+      "name": "security",
+      "color": "#0ea5e9"
+    }
+  },
+  "sprints": {
+    "f0ff75aa-e0b8-4c3a-8df2-b4b20ba93adc": {
+      "id": "f0ff75aa-e0b8-4c3a-8df2-b4b20ba93adc",
+      "name": "Sprint 1",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "start_date": "2026-01-18T06:44:02.526139+00:00",
+      "end_date": "2026-02-01T06:44:02.526139+00:00",
+      "goal": "Deliver sprint 1 scope",
+      "created_at": "2026-03-01T06:44:02.526176",
+      "is_active": false,
+      "velocity": 0.0
+    },
+    "b79b734f-b562-40c4-888e-a67b1c077c64": {
+      "id": "b79b734f-b562-40c4-888e-a67b1c077c64",
+      "name": "Sprint 2",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "start_date": "2026-02-01T06:44:02.526139+00:00",
+      "end_date": "2026-02-15T06:44:02.526139+00:00",
+      "goal": "Deliver sprint 2 scope",
+      "created_at": "2026-03-01T06:44:02.526208",
+      "is_active": false,
+      "velocity": 0.0
+    },
+    "c0ba84d5-d0af-4919-96ea-53bc3f57ac98": {
+      "id": "c0ba84d5-d0af-4919-96ea-53bc3f57ac98",
+      "name": "Sprint 3",
+      "project_id": "7f84bcee-cb54-42f0-820b-96aeb943a347",
+      "start_date": "2026-02-15T06:44:02.526139+00:00",
+      "end_date": "2026-03-01T06:44:02.526139+00:00",
+      "goal": "Deliver sprint 3 scope",
+      "created_at": "2026-03-01T06:44:02.526231",
+      "is_active": true,
+      "velocity": null
+    },
+    "7f6910b6-f292-46aa-809d-2bea696e745c": {
+      "id": "7f6910b6-f292-46aa-809d-2bea696e745c",
+      "name": "Sprint 1",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "start_date": "2026-01-18T06:44:02.526139+00:00",
+      "end_date": "2026-02-01T06:44:02.526139+00:00",
+      "goal": "Deliver sprint 1 scope",
+      "created_at": "2026-03-01T06:44:02.526257",
+      "is_active": false,
+      "velocity": 0.0
+    },
+    "e7c04100-5eaf-4872-aaf0-7b1935e5eaa9": {
+      "id": "e7c04100-5eaf-4872-aaf0-7b1935e5eaa9",
+      "name": "Sprint 2",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "start_date": "2026-02-01T06:44:02.526139+00:00",
+      "end_date": "2026-02-15T06:44:02.526139+00:00",
+      "goal": "Deliver sprint 2 scope",
+      "created_at": "2026-03-01T06:44:02.526276",
+      "is_active": false,
+      "velocity": 0.0
+    },
+    "3e888045-08a0-45de-a587-4de2a140f9ae": {
+      "id": "3e888045-08a0-45de-a587-4de2a140f9ae",
+      "name": "Sprint 3",
+      "project_id": "e05ebf7b-12d9-4312-a4cd-0ddc247834b8",
+      "start_date": "2026-02-15T06:44:02.526139+00:00",
+      "end_date": "2026-03-01T06:44:02.526139+00:00",
+      "goal": "Deliver sprint 3 scope",
+      "created_at": "2026-03-01T06:44:02.526294",
+      "is_active": true,
+      "velocity": null
+    },
+    "3d092906-729e-47a0-9f4b-893efb487154": {
+      "id": "3d092906-729e-47a0-9f4b-893efb487154",
+      "name": "Sprint 1",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "start_date": "2026-01-18T06:44:02.526139+00:00",
+      "end_date": "2026-02-01T06:44:02.526139+00:00",
+      "goal": "Deliver sprint 1 scope",
+      "created_at": "2026-03-01T06:44:02.526317",
+      "is_active": false,
+      "velocity": 0.0
+    },
+    "74d5462f-0998-4689-89ff-b28974b69afb": {
+      "id": "74d5462f-0998-4689-89ff-b28974b69afb",
+      "name": "Sprint 2",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "start_date": "2026-02-01T06:44:02.526139+00:00",
+      "end_date": "2026-02-15T06:44:02.526139+00:00",
+      "goal": "Deliver sprint 2 scope",
+      "created_at": "2026-03-01T06:44:02.526336",
+      "is_active": false,
+      "velocity": 0.0
+    },
+    "13288204-0973-4361-8a62-022247ceb76d": {
+      "id": "13288204-0973-4361-8a62-022247ceb76d",
+      "name": "Sprint 3",
+      "project_id": "4a619137-628b-4785-994d-121505d1bf13",
+      "start_date": "2026-02-15T06:44:02.526139+00:00",
+      "end_date": "2026-03-01T06:44:02.526139+00:00",
+      "goal": "Deliver sprint 3 scope",
+      "created_at": "2026-03-01T06:44:02.526353",
+      "is_active": true,
+      "velocity": null
+    }
+  },
+  "saved_at": "2026-03-01T06:44:02.535942"
+}
