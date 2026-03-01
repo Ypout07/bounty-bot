@@ -16,7 +16,7 @@ func RevertWorkspace(repoPath string) error {
 		return fmt.Errorf("git restore failed. Is the directory a git repository?: %w", err)
 	}
 
-	cleanCmd := exec.Command("git", "clean", "-fd")
+	cleanCmd := exec.Command("git", "clean", "-fdx")
 	cleanCmd.Dir = repoPath
 	if err := cleanCmd.Run(); err != nil {
 		return fmt.Errorf("git clean failed: %w", err)

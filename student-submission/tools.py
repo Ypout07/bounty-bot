@@ -1,3 +1,4 @@
+import os
 import subprocess
 import sys
 
@@ -5,6 +6,47 @@ from CAL import tool
 from dotenv import load_dotenv
 
 load_dotenv()
+
+
+@tool
+async def get_file_structure_context(path: str = "/workspace"):
+    """
+    Generates a visual tree representation of the directory structure.
+
+    Args:
+        path: The directory path to map. Defaults to /workspace.
+
+    Returns:
+        A dictionary containing the text-based tree structure of the files.
+    """
+    output = []
+    try:
+        # Robust Python-based directory walker
+        if not os.path.exists(path):
+            return {
+                "content": [{"type": "text", "text": f"Error: Path {path} not found."}],
+                "metadata": {"path": path, "status": "failed"},
+            }
+
+        for root, dirs, files in os.walk(path):
+            # Skip hidden directories like .git
+            dirs[:] = [d for d in dirs if not d.startswith(".")]
+            level = root.replace(path, "").count(os.sep)
+            indent = " " * 4 * level
+            output.append(f"{indent}{os.path.basename(root) or path}/")
+            subindent = " " * 4 * (level + 1)
+            for f in files:
+                if not f.startswith("."):
+                    output.append(f"{subindent}{f}")
+
+        tree_output = "\n".join(output)
+    except Exception as e:
+        tree_output = f"Error retrieving structure: {str(e)}"
+
+    return {
+        "content": [{"type": "text", "text": tree_output}],
+        "metadata": {"path": path, "output_length": len(tree_output)},
+    }
 
 
 @tool

@@ -1,1 +1,2 @@
 creevo-agent-library[mcp]
+python-dotenv
