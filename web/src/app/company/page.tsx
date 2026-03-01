@@ -51,6 +51,20 @@ export default function CompanyPage() {
     if (saved) {
       setChallenges((prev) => [saved, ...prev]);
       setSelected(saved);
+
+      // Create competition + seed mock submissions via /api/problems
+      try {
+        await fetch("/api/problems", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            title: saved.title,
+            description: saved.description,
+          }),
+        });
+      } catch (err) {
+        console.error("Failed to seed competition:", err);
+      }
     }
     setShowForm(false);
     setShowPostModal(true);

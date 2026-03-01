@@ -5,27 +5,24 @@ export async function POST(request: Request) {
   try {
     const body = await request.json();
 
-    // We insert the new competition and immediately .select() the ID it generated
-    const { data: newCompetition, error: compError } = await supabase
-      .from("competitions")
-      .insert([
-        {
-          title: body.title,
-          description: body.description,
-        },
-      ])
+    // Look up the challenge that was just created by title to get its ID
+    const { data: challenge, error: lookupError } = await supabase
+      .from("challenges")
       .select("id")
+      .eq("title", body.title)
+      .order("posted_at", { ascending: false })
+      .limit(1)
       .single();
 
-    if (compError || !newCompetition) {
-      console.error("Failed to create competition:", compError);
+    if (lookupError || !challenge) {
+      console.error("Failed to find challenge:", lookupError);
       return NextResponse.json(
-        { error: "Failed to create competition" },
+        { error: "Failed to find challenge" },
         { status: 500 },
       );
     }
 
-    const newProblemId = newCompetition.id;
+    const newProblemId = challenge.id;
 
     console.log(`Seeding 24 mock competitors for problem: ${newProblemId}`);
 
@@ -53,8 +50,8 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         success: true,
-        competition_id: newProblemId,
-        message: "Competition created and seeded!",
+        challenge_id: newProblemId,
+        message: "Challenge seeded with mock submissions!",
       },
       { status: 200 },
     );
