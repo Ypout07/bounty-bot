@@ -3,6 +3,8 @@ package cmd
 import (
 	"errors"
 	"fmt"
+	"math/rand"
+	"strings"
 	"time"
 
 	"github.com/spf13/cobra"
@@ -34,6 +36,37 @@ var batchCmd = &cobra.Command{
 
 			processedCount++
 			fmt.Printf("\nProcessing job %d: %s (Tag: %s)\n", processedCount, job.SubmissionID, job.DockerImageTag)
+
+			if strings.HasPrefix(job.DockerImageTag, "mock/") {
+				fmt.Println("[*] SIMULATION MODE: Generating mock metrics...")
+				time.Sleep(200 * time.Millisecond) // Visually pause so the terminal doesn't blur
+
+				var passedTests bool
+				var tokensUsed int
+				var execTime float64
+
+				if job.DockerImageTag == "mock/golden" {
+					passedTests = true
+					tokensUsed = 850
+					execTime = 2.4
+				} else {
+					// Competitors have a 50% fail rate, burn 4k-10k tokens, and take 15-60 seconds
+					passedTests = rand.Intn(2) == 0
+					tokensUsed = 4000 + rand.Intn(6000)
+					execTime = 15.0 + rand.Float64()*45.0
+				}
+
+				err = api.SubmitResults(job.SubmissionID, passedTests, execTime, tokensUsed)
+				if err != nil {
+					fmt.Printf("Failed to submit mock results for %s: %v\n", job.SubmissionID, err)
+				} else {
+					fmt.Println("Mock results successfully transmitted.")
+				}
+
+				// CRITICAL: Immediately halt this iteration and jump to the next job in the queue.
+				// This guarantees we never call Docker or Git for a mock agent.
+				continue
+			}
 
 			startTime := time.Now()
 			agentFailed := false

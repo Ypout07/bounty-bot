@@ -7,6 +7,7 @@ try:
     print("[DEBUG] Attempting to import CAL...")
     from CAL import Agent, FullCompressionMemory, GeminiLLM, StopTool, subagent
     from CAL.logger import MaximLogger
+
     print("[DEBUG] CAL imported successfully.")
 except ImportError as e:
     print(f"[FATAL] Failed to import CAL: {e}")
@@ -21,6 +22,7 @@ try:
         read_contents_of_file,
         write_file,
     )
+
     print("[DEBUG] Local modules imported successfully.")
 except Exception as e:
     print(f"[FATAL] Failed to import local modules: {e}")
@@ -30,8 +32,8 @@ load_dotenv()
 
 # Hardcode Maxim API Key and Log Repo ID below
 # THE USER WILL REPLACE THESE
-os.environ["MAXIM_API_KEY"] = "INSERT_MAXIM_API_KEY_HERE"
-os.environ["MAXIM_LOG_REPO_ID"] = "INSERT_MAXIM_LOG_REPO_ID_HERE"
+os.environ["MAXIM_API_KEY"] = "sk_mx_mm7nasrb_ifajFnrz3YAmilFWijSUNcogqc0ArrKQ"
+os.environ["MAXIM_LOG_REPO_ID"] = "cmm7ndaup01cbm7vpa3c26wn9"
 
 api_key = os.getenv("GEMINI_API_KEY")
 
@@ -60,21 +62,35 @@ class MetricsLogger(MaximLogger):
                 if meta is None:
                     continue
                 for field in ("total_token_count", "totalTokenCount"):
-                    val = meta.get(field, 0) if isinstance(meta, dict) else getattr(meta, field, 0)
+                    val = (
+                        meta.get(field, 0)
+                        if isinstance(meta, dict)
+                        else getattr(meta, field, 0)
+                    )
                     if val:
                         return int(val)
                 # Sum prompt + candidates if total isn't available
-                prompt = (meta.get("prompt_token_count", 0) if isinstance(meta, dict)
-                          else getattr(meta, "prompt_token_count", 0)) or 0
-                candidates = (meta.get("candidates_token_count", 0) if isinstance(meta, dict)
-                              else getattr(meta, "candidates_token_count", 0)) or 0
+                prompt = (
+                    meta.get("prompt_token_count", 0)
+                    if isinstance(meta, dict)
+                    else getattr(meta, "prompt_token_count", 0)
+                ) or 0
+                candidates = (
+                    meta.get("candidates_token_count", 0)
+                    if isinstance(meta, dict)
+                    else getattr(meta, "candidates_token_count", 0)
+                ) or 0
                 if prompt or candidates:
                     return int(prompt) + int(candidates)
 
         # OpenAI format
         if hasattr(obj, "usage") and obj.usage:
             u = obj.usage
-            val = u.get("total_tokens", 0) if isinstance(u, dict) else getattr(u, "total_tokens", 0)
+            val = (
+                u.get("total_tokens", 0)
+                if isinstance(u, dict)
+                else getattr(u, "total_tokens", 0)
+            )
             if val:
                 return int(val)
 
@@ -87,8 +103,12 @@ class MetricsLogger(MaximLogger):
         # Fallback: scan all attributes for anything with "token" in the name
         try:
             attrs = obj if isinstance(obj, dict) else vars(obj)
-            for key, val in (attrs.items() if isinstance(attrs, dict) else []):
-                if "token" in str(key).lower() and isinstance(val, (int, float)) and val > 0:
+            for key, val in attrs.items() if isinstance(attrs, dict) else []:
+                if (
+                    "token" in str(key).lower()
+                    and isinstance(val, (int, float))
+                    and val > 0
+                ):
                     print(f"[Logger] Found tokens via fallback attr '{key}': {val}")
                     return int(val)
         except TypeError:
@@ -99,12 +119,22 @@ class MetricsLogger(MaximLogger):
     def _extract_tokens_from_usage(self, usage):
         """Extract tokens from a usage/usage_metadata object or dict."""
         if isinstance(usage, dict):
-            for key in ("total_token_count", "totalTokenCount", "total_tokens", "totalTokens"):
+            for key in (
+                "total_token_count",
+                "totalTokenCount",
+                "total_tokens",
+                "totalTokens",
+            ):
                 if usage.get(key):
                     return int(usage[key])
-            prompt = usage.get("prompt_token_count", 0) or usage.get("prompt_tokens", 0) or 0
-            completion = (usage.get("candidates_token_count", 0) or
-                          usage.get("completion_tokens", 0) or 0)
+            prompt = (
+                usage.get("prompt_token_count", 0) or usage.get("prompt_tokens", 0) or 0
+            )
+            completion = (
+                usage.get("candidates_token_count", 0)
+                or usage.get("completion_tokens", 0)
+                or 0
+            )
             if prompt or completion:
                 return int(prompt) + int(completion)
         else:
@@ -112,9 +142,16 @@ class MetricsLogger(MaximLogger):
                 val = getattr(usage, attr, 0)
                 if val:
                     return int(val)
-            prompt = getattr(usage, "prompt_token_count", 0) or getattr(usage, "prompt_tokens", 0) or 0
-            completion = (getattr(usage, "candidates_token_count", 0) or
-                          getattr(usage, "completion_tokens", 0) or 0)
+            prompt = (
+                getattr(usage, "prompt_token_count", 0)
+                or getattr(usage, "prompt_tokens", 0)
+                or 0
+            )
+            completion = (
+                getattr(usage, "candidates_token_count", 0)
+                or getattr(usage, "completion_tokens", 0)
+                or 0
+            )
             if prompt or completion:
                 return int(prompt) + int(completion)
         return 0
@@ -146,7 +183,9 @@ class MetricsLogger(MaximLogger):
                 self.total_tokens += tokens
                 print(f"[Logger] +{tokens} tokens (total: {self.total_tokens})")
             else:
-                print(f"[Logger] No tokens found on {type(message).__name__} (attrs: {[a for a in dir(message) if not a.startswith('_')]})")
+                print(
+                    f"[Logger] No tokens found on {type(message).__name__} (attrs: {[a for a in dir(message) if not a.startswith('_')]})"
+                )
         except Exception as e:
             print(f"[ERROR] Failed to track tokens: {e}")
 
@@ -185,7 +224,12 @@ try:
 
     @subagent(
         system_prompt=MRE_SUBAGENT_PROMPT,
-        tools=[get_file_structure_context, read_contents_of_file, execute_file, write_file],
+        tools=[
+            get_file_structure_context,
+            read_contents_of_file,
+            execute_file,
+            write_file,
+        ],
         llm=GeminiLLM(api_key=api_key, model="gemini-3-flash-preview", max_tokens=8192),
         max_calls=10,
         max_tokens=16384,
@@ -195,7 +239,12 @@ try:
 
     @subagent(
         system_prompt=SE_SUBAGENT_PROMPT,
-        tools=[get_file_structure_context, read_contents_of_file, execute_file, write_file],
+        tools=[
+            get_file_structure_context,
+            read_contents_of_file,
+            execute_file,
+            write_file,
+        ],
         llm=GeminiLLM(api_key=api_key, model="gemini-3-flash-preview", max_tokens=8192),
         max_calls=10,
         max_tokens=16384,
@@ -218,7 +267,7 @@ try:
             execute_file,
             write_file,
             minimal_reproducible_example,
-            side_effects
+            side_effects,
         ],
         logger=logger,
     )
@@ -230,11 +279,12 @@ try:
 except Exception as e:
     print(f"[FATAL] Agent crashed during setup or execution: {e}")
     import traceback
+
     traceback.print_exc()
 finally:
     # This now handles both Maxim flushing AND metrics.json writing
     try:
-        if 'logger' in locals():
+        if "logger" in locals():
             logger.shutdown()
     except Exception as e:
         print(f"[ERROR] Failed during logger shutdown: {e}")
