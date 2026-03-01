@@ -66,16 +66,29 @@ class MetricsLogger(MaximLogger):
 
         # 2. Track tokens locally for metrics.json
         try:
-            if hasattr(message, "usage") and message.usage:
-                self.total_tokens += getattr(message.usage, "total_tokens", 0)
-            elif isinstance(message, dict) and "usage" in message:
-                self.total_tokens += message["usage"].get("total_tokens", 0)
+            tokens = 0
+            # Gemini format: usage_metadata.total_token_count
+            if hasattr(message, "usage_metadata") and message.usage_metadata:
+                tokens = getattr(message.usage_metadata, "total_token_count", 0) or 0
+            # OpenAI format: usage.total_tokens
+            elif hasattr(message, "usage") and message.usage:
+                tokens = getattr(message.usage, "total_tokens", 0) or 0
+            # Dict format
+            elif isinstance(message, dict):
+                if "usage_metadata" in message:
+                    tokens = message["usage_metadata"].get("total_token_count", 0) or 0
+                elif "usage" in message:
+                    tokens = message["usage"].get("total_tokens", 0) or 0
+            self.total_tokens += tokens
+            if tokens > 0:
+                print(f"[Logger] +{tokens} tokens (total: {self.total_tokens})")
         except Exception as e:
             print(f"[ERROR] Failed to track tokens: {e}")
 
     def shutdown(self):
         # 3. Write the agreed-upon metrics.json before closing
         try:
+            os.makedirs(os.path.dirname(self.metrics_path), exist_ok=True)
             with open(self.metrics_path, "w") as f:
                 json.dump({"tokens_used": self.total_tokens}, f)
             print(f"\n[Logger] Final token count: {self.total_tokens}")
@@ -87,7 +100,7 @@ class MetricsLogger(MaximLogger):
         try:
             super().shutdown()
         except Exception as e:
-             print(f"[WARNING] MaximLogger failed to shutdown: {e}")
+            print(f"[WARNING] MaximLogger failed to shutdown: {e}")
 
 
 try:
