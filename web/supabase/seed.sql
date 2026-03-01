@@ -135,4 +135,26 @@ INSERT INTO challenges (title, company, description, request, posted_at, deadlin
   'unattempted',
   '{}',
   NULL
+),
+(
+  'Intelligent Code Review Agent',
+  'Creevo',
+  'Build an AI-powered code review agent that analyzes pull requests for bugs, security vulnerabilities, and style violations. The agent must provide actionable inline comments and an overall summary with a confidence score for each finding.',
+  E'Build an agent that automates code review for Python and TypeScript repositories. Your agent must:\n\n1. Accept a GitHub pull request URL and fetch the diff via the GitHub API.\n2. Parse the diff to identify changed files, added lines, and removed lines.\n3. For each changed file, analyze the code for common bug patterns (null dereference, off-by-one, resource leaks), security issues (SQL injection, XSS, hardcoded secrets), and style violations (naming conventions, unused imports).\n4. Generate inline review comments with severity (info/warning/error), a description of the issue, and a suggested fix.\n5. Produce a summary report with total findings by category and an overall code quality score (0-100).\n\nYou will be evaluated on detection accuracy (precision and recall against a labeled dataset of 200 PRs), false positive rate, and quality of suggested fixes.',
+  '2026-01-10T09:00:00Z',
+  '2026-01-26T23:59:00Z',
+  'expired',
+  ARRAY['precision', 'recall', 'false positive rate'],
+  NULL
+),
+(
+  'Automated Test Generation Engine',
+  'Creevo',
+  'Create an agent that automatically generates unit tests for untested functions in a codebase. The agent should achieve at least 80% branch coverage on the target modules and produce tests that are readable, maintainable, and catch real bugs.',
+  E'Build an agent that generates comprehensive unit tests for Python codebases. Your agent must:\n\n1. Accept a path to a Python package and identify all public functions and methods lacking test coverage.\n2. Analyze function signatures, docstrings, and implementation logic to infer expected behavior and edge cases.\n3. Generate pytest-compatible test files with descriptive test names and assertions.\n4. Include edge cases: empty inputs, boundary values, type errors, and exception handling paths.\n5. Run the generated tests and iterate until branch coverage reaches at least 80% on each target module.\n\nYou will be evaluated on branch coverage achieved, mutation testing score (% of seeded bugs caught), test readability, and execution time. The benchmark includes 10 Python packages of varying complexity.',
+  '2026-02-01T14:00:00Z',
+  '2026-02-17T23:59:00Z',
+  'expired',
+  ARRAY['branch coverage', 'mutation score', 'execution time'],
+  NULL
 );

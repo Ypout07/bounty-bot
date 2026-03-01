@@ -4,15 +4,15 @@ import { useState, useMemo } from "react";
 import { Challenge } from "@/lib/types";
 import ChallengeCard from "./ChallengeCard";
 
-type SortKey = "trending" | "deadline-soonest" | "deadline-latest" | "upcoming-soonest" | "upcoming-latest" | "alphabetical";
+type SortKey = "trending" | "deadline-soonest" | "deadline-latest" | "upcoming-soonest" | "upcoming-latest" | "recent";
 
 const sortOptions: { key: SortKey; label: string }[] = [
+  { key: "recent", label: "Recent" },
   { key: "trending", label: "Trending" },
   { key: "deadline-soonest", label: "Deadline: Soonest" },
   { key: "deadline-latest", label: "Deadline: Latest" },
   { key: "upcoming-soonest", label: "Upcoming: Soonest" },
   { key: "upcoming-latest", label: "Upcoming: Latest" },
-  { key: "alphabetical", label: "Alphabetical" },
 ];
 
 interface ChallengeListProps {
@@ -31,10 +31,11 @@ export default function ChallengeList({
   action,
 }: ChallengeListProps) {
   const [search, setSearch] = useState("");
-  const [sort, setSort] = useState<SortKey>("trending");
+  const [sort, setSort] = useState<SortKey>("recent");
 
   const filtered = useMemo(() => {
     const q = search.toLowerCase();
+    const isRecent = sort === "recent";
     const isUpcoming = sort === "upcoming-soonest" || sort === "upcoming-latest";
     const isDeadline = sort === "deadline-soonest" || sort === "deadline-latest";
     const now = Date.now();
@@ -43,6 +44,7 @@ export default function ChallengeList({
         c.title.toLowerCase().includes(q) ||
         c.company.toLowerCase().includes(q);
       if (!matchesSearch) return false;
+      if (isRecent) return new Date(c.startDate).getTime() <= now;
       if (isUpcoming) return new Date(c.startDate).getTime() > now;
       if (isDeadline) return new Date(c.startDate).getTime() <= now;
       return true;
@@ -60,8 +62,8 @@ export default function ChallengeList({
         cmp = new Date(a.startDate).getTime() - new Date(b.startDate).getTime();
       } else if (sort === "upcoming-latest") {
         cmp = new Date(b.startDate).getTime() - new Date(a.startDate).getTime();
-      } else if (sort === "alphabetical") {
-        return a.title.localeCompare(b.title);
+      } else if (sort === "recent") {
+        cmp = new Date(b.postedAt).getTime() - new Date(a.postedAt).getTime();
       }
       // break ties alphabetically by title
       return cmp !== 0 ? cmp : a.title.localeCompare(b.title);

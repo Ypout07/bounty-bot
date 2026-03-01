@@ -11,12 +11,11 @@ export interface Challenge {
   deadline: string;       // ISO date string
   status: ChallengeStatus;
   submissionCount: number;
+  repoUrl?: string;
 }
 
 export interface ProviderChallenge extends Challenge {
   metrics: string[];
-  repoUrl: string;
-  submissionCount: number;
 }
 
 export type SubmissionStatus = "pending" | "processing" | "completed" | "failed";
