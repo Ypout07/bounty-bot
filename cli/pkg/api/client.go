@@ -14,7 +14,7 @@ import (
 // ErrQueueEmpty signals that the batch processor should terminate.
 var ErrQueueEmpty = errors.New("no pending submissions in the queue")
 
-const defaultBaseURL = "http://localhost:3000" // Update before demo
+const defaultBaseURL = "https://bountybot-six.vercel.app"
 const demoJudgeKey = "DEMO_BYPASS_KEY_123"
 
 func getBaseURL() string {

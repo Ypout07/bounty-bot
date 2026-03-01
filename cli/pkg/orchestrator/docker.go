@@ -59,7 +59,7 @@ func RunAgent(imageTag string, localRepoPath string, apiKey string) error {
 		},
 	}
 
-	fmt.Println("Creating container.")
+	fmt.Println("Creating container. This can take up to 1 minute.")
 
 	resp, err := cli.ContainerCreate(ctx, &container.Config{
 		Image: imageTag,
@@ -73,13 +73,13 @@ func RunAgent(imageTag string, localRepoPath string, apiKey string) error {
 		return fmt.Errorf("failed to create container: %w", err)
 	}
 
-	fmt.Println("Starting AI Agent execution sequence.")
+	fmt.Println("Starting AI Agent execution sequence. This times out after 10 minutes.")
 	if err := cli.ContainerStart(ctx, resp.ID, container.StartOptions{}); err != nil {
 		return fmt.Errorf("failed to start container: %w", err)
 	}
 
 	// agent has exactly 3 minutes
-	timeoutCtx, cancel := context.WithTimeout(ctx, 3*time.Minute)
+	timeoutCtx, cancel := context.WithTimeout(ctx, 10*time.Minute)
 	defer cancel()
 
 	statusCh, errCh := cli.ContainerWait(timeoutCtx, resp.ID, container.WaitConditionNotRunning)
@@ -98,7 +98,7 @@ func RunAgent(imageTag string, localRepoPath string, apiKey string) error {
 		fmt.Println("Agent execution timed out. Force killing container.")
 		_ = cli.ContainerKill(ctx, resp.ID, "SIGKILL")
 		_ = cli.ContainerRemove(ctx, resp.ID, container.RemoveOptions{Force: true})
-		return fmt.Errorf("agent execution exceeded 3 minute timeout")
+		return fmt.Errorf("agent execution exceeded 10 minute timeout")
 	}
 
 	return nil

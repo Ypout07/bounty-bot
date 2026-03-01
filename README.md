@@ -1,1 +1,1 @@
-# Bounty Bot
+# BountyBot
