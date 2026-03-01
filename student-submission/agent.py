@@ -48,10 +48,85 @@ class MetricsLogger(MaximLogger):
             super().__init__(**kwargs)
         except Exception as e:
             print(f"[ERROR] Failed to initialize MaximLogger: {e}")
-            # If we fail to initialize the base logger, we still want our own functionality
-            pass
         self.metrics_path = metrics_path
         self.total_tokens = 0
+
+    def _extract_tokens(self, obj):
+        """Recursively search for token count in any response format."""
+        # Direct attribute checks — Gemini format
+        for attr in ("usage_metadata", "usageMetadata"):
+            if hasattr(obj, attr):
+                meta = getattr(obj, attr)
+                if meta is None:
+                    continue
+                for field in ("total_token_count", "totalTokenCount"):
+                    val = meta.get(field, 0) if isinstance(meta, dict) else getattr(meta, field, 0)
+                    if val:
+                        return int(val)
+                # Sum prompt + candidates if total isn't available
+                prompt = (meta.get("prompt_token_count", 0) if isinstance(meta, dict)
+                          else getattr(meta, "prompt_token_count", 0)) or 0
+                candidates = (meta.get("candidates_token_count", 0) if isinstance(meta, dict)
+                              else getattr(meta, "candidates_token_count", 0)) or 0
+                if prompt or candidates:
+                    return int(prompt) + int(candidates)
+
+        # OpenAI format
+        if hasattr(obj, "usage") and obj.usage:
+            u = obj.usage
+            val = u.get("total_tokens", 0) if isinstance(u, dict) else getattr(u, "total_tokens", 0)
+            if val:
+                return int(val)
+
+        # Dict top-level checks
+        if isinstance(obj, dict):
+            for key in ("usage_metadata", "usageMetadata", "usage"):
+                if key in obj and obj[key]:
+                    return self._extract_tokens_from_usage(obj[key])
+
+        # Fallback: scan all attributes for anything with "token" in the name
+        try:
+            attrs = obj if isinstance(obj, dict) else vars(obj)
+            for key, val in (attrs.items() if isinstance(attrs, dict) else []):
+                if "token" in str(key).lower() and isinstance(val, (int, float)) and val > 0:
+                    print(f"[Logger] Found tokens via fallback attr '{key}': {val}")
+                    return int(val)
+        except TypeError:
+            pass
+
+        return 0
+
+    def _extract_tokens_from_usage(self, usage):
+        """Extract tokens from a usage/usage_metadata object or dict."""
+        if isinstance(usage, dict):
+            for key in ("total_token_count", "totalTokenCount", "total_tokens", "totalTokens"):
+                if usage.get(key):
+                    return int(usage[key])
+            prompt = usage.get("prompt_token_count", 0) or usage.get("prompt_tokens", 0) or 0
+            completion = (usage.get("candidates_token_count", 0) or
+                          usage.get("completion_tokens", 0) or 0)
+            if prompt or completion:
+                return int(prompt) + int(completion)
+        else:
+            for attr in ("total_token_count", "totalTokenCount", "total_tokens"):
+                val = getattr(usage, attr, 0)
+                if val:
+                    return int(val)
+            prompt = getattr(usage, "prompt_token_count", 0) or getattr(usage, "prompt_tokens", 0) or 0
+            completion = (getattr(usage, "candidates_token_count", 0) or
+                          getattr(usage, "completion_tokens", 0) or 0)
+            if prompt or completion:
+                return int(prompt) + int(completion)
+        return 0
+
+    def _write_metrics(self):
+        """Write current token count to metrics.json."""
+        try:
+            os.makedirs(os.path.dirname(self.metrics_path), exist_ok=True)
+            with open(self.metrics_path, "w") as f:
+                json.dump({"tokens_used": self.total_tokens}, f)
+        except Exception as e:
+            print(f"[Logger] Failed to write metrics.json: {e}")
 
     def log_llm_response(
         self, message, iteration, model, provider, start_time, end_time
@@ -64,39 +139,27 @@ class MetricsLogger(MaximLogger):
         except Exception as e:
             print(f"[WARNING] MaximLogger failed to log: {e}")
 
-        # 2. Track tokens locally for metrics.json
+        # 2. Track tokens locally
         try:
-            tokens = 0
-            # Gemini format: usage_metadata.total_token_count
-            if hasattr(message, "usage_metadata") and message.usage_metadata:
-                tokens = getattr(message.usage_metadata, "total_token_count", 0) or 0
-            # OpenAI format: usage.total_tokens
-            elif hasattr(message, "usage") and message.usage:
-                tokens = getattr(message.usage, "total_tokens", 0) or 0
-            # Dict format
-            elif isinstance(message, dict):
-                if "usage_metadata" in message:
-                    tokens = message["usage_metadata"].get("total_token_count", 0) or 0
-                elif "usage" in message:
-                    tokens = message["usage"].get("total_tokens", 0) or 0
-            self.total_tokens += tokens
+            tokens = self._extract_tokens(message)
             if tokens > 0:
+                self.total_tokens += tokens
                 print(f"[Logger] +{tokens} tokens (total: {self.total_tokens})")
+            else:
+                print(f"[Logger] No tokens found on {type(message).__name__} (attrs: {[a for a in dir(message) if not a.startswith('_')]})")
         except Exception as e:
             print(f"[ERROR] Failed to track tokens: {e}")
 
-    def shutdown(self):
-        # 3. Write the agreed-upon metrics.json before closing
-        try:
-            os.makedirs(os.path.dirname(self.metrics_path), exist_ok=True)
-            with open(self.metrics_path, "w") as f:
-                json.dump({"tokens_used": self.total_tokens}, f)
-            print(f"\n[Logger] Final token count: {self.total_tokens}")
-            print(f"[Logger] Metrics written to {self.metrics_path}")
-        except Exception as e:
-            print(f"[Logger] Failed to write metrics.json: {e}")
+        # 3. Write metrics incrementally after every LLM call
+        self._write_metrics()
 
-        # 4. Finalize Maxim session
+    def shutdown(self):
+        # Final metrics write
+        print(f"\n[Logger] Final token count: {self.total_tokens}")
+        self._write_metrics()
+        print(f"[Logger] Metrics written to {self.metrics_path}")
+
+        # Finalize Maxim session
         try:
             super().shutdown()
         except Exception as e:
