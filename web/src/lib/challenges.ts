@@ -14,6 +14,7 @@ function toChallenge(row: Record<string, unknown>): Challenge {
     deadline: row.deadline as string,
     status: row.status as Challenge["status"],
     submissionCount: (row.submission_count as number) ?? 0,
+    repoUrl: (row.repo_url as string) ?? "",
   };
 }
 
@@ -42,12 +43,12 @@ export async function fetchChallenges(): Promise<Challenge[]> {
 }
 
 // Fetch challenges created by a specific provider
-export async function fetchProviderChallenges(userId?: string): Promise<ProviderChallenge[]> {
-  let query = supabase.from("challenges").select("*").order("posted_at", { ascending: false });
-
-  if (userId) {
-    query = query.eq("created_by", userId);
-  }
+export async function fetchProviderChallenges(company: string = "Creevo"): Promise<ProviderChallenge[]> {
+  const query = supabase
+    .from("challenges")
+    .select("*")
+    .eq("company", company)
+    .order("posted_at", { ascending: false });
 
   const { data, error } = await query;
 
@@ -86,7 +87,7 @@ export async function createChallenge(challenge: {
     .single();
 
   if (error) {
-    console.error("Error creating challenge:", error);
+    console.error("Error creating challenge:", error.message, error.details, error.hint, error.code);
     return null;
   }
 

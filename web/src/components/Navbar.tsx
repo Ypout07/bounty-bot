@@ -14,8 +14,8 @@ export default function Navbar() {
 
   return (
     <nav className="flex items-center justify-between px-8 h-12 bg-surface-hover/60 backdrop-blur-lg border-b border-surface-hover flex-shrink-0">
-      <Link href="/" className="text-sm text-muted hover:text-heading transition-colors">
-        Welcome back, <span className="text-heading font-semibold">Adam</span>
+      <Link href="/" className="hover:text-accent transition-colors">
+        <span className="text-xl text-heading font-black tracking-tighter uppercase">BountyBot</span>
       </Link>
 
       <div className="flex items-center gap-0">

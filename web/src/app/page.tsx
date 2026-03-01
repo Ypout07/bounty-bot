@@ -4,16 +4,16 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 
 const COMPANIES = [
-  { name: "Jane Street", color: "text-muted/50" },
-  { name: "Cloudflare", color: "text-muted/50" },
-  { name: "Anthropic", color: "text-muted/50" },
-  { name: "Creevo", color: "text-pink-500" },
-  { name: "DineU", color: "text-red-500" },
-  { name: "FindU", color: "text-red-500" },
-  { name: "Reach", color: "text-green-500" },
-  { name: "Coinbase", color: "text-muted/50" },
-  { name: "Capital One", color: "text-muted/50" },
-  { name: "Elasticsearch", color: "text-muted/50" },
+  { name: "Jane Street", color: "text-muted/50", large: false },
+  { name: "Cloudflare", color: "text-muted/50", large: false },
+  { name: "Anthropic", color: "text-muted/50", large: false },
+  { name: "Creevo", color: "text-pink-500", large: true },
+  { name: "DineU", color: "text-red-500", large: true },
+  { name: "FindU", color: "text-red-500", large: true },
+  { name: "Reach", color: "text-green-500", large: true },
+  { name: "Coinbase", color: "text-muted/50", large: false },
+  { name: "Capital One", color: "text-muted/50", large: false },
+  { name: "Elasticsearch", color: "text-muted/50", large: false },
 ];
 
 const STEPS = [
@@ -85,7 +85,7 @@ export default function LandingPage() {
             {COMPANIES.map((company) => (
               <span
                 key={company.name}
-                className={`text-sm font-medium ${company.color} cursor-default whitespace-nowrap`}
+                className={`${company.large ? "text-lg" : "text-sm"} font-medium ${company.color} cursor-default whitespace-nowrap`}
               >
                 {company.name}
               </span>

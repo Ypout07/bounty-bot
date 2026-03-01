@@ -11,12 +11,13 @@ import ProviderChallengeDetail from "@/components/ProviderChallengeDetail";
 export default function CompanyPage() {
   const [challenges, setChallenges] = useState<ProviderChallenge[]>([]);
   const [selected, setSelected] = useState<ProviderChallenge | null>(null);
-  const [showForm, setShowForm] = useState(true);
+  const [showForm, setShowForm] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchProviderChallenges().then((data) => {
       setChallenges(data);
+      if (data.length > 0) setSelected(data[0]);
       setLoading(false);
     });
   }, []);
@@ -70,9 +71,9 @@ export default function CompanyPage() {
               action={
                 <button
                   onClick={handleNewChallenge}
-                  className="px-3 py-1.5 text-xs font-medium rounded-full bg-accent text-white hover:bg-accent-dim transition-colors"
+                  className="px-5 py-2.5 text-sm font-medium rounded-full bg-accent text-white hover:bg-accent-dim transition-colors"
                 >
-                  New Challenge
+                  Create New Challenge
                 </button>
               }
             />
