@@ -1,9 +1,38 @@
 from CAL import tool
 from dotenv import load_dotenv
+import os
 import subprocess
 import sys
 
 load_dotenv()
+
+def get_tree_string(root_dir, prefix=""):
+    """
+    Recursively builds a string representing the directory tree.
+    """
+    tree_lines = []
+    
+    try:
+        # Get and sort items: folders first, then files alphabetically
+        items = sorted(os.listdir(root_dir), 
+                       key=lambda x: (os.path.isfile(os.path.join(root_dir, x)), x.lower()))
+    except PermissionError:
+        return f"{prefix}└── [Permission Denied]\n"
+
+    for i, item in enumerate(items):
+        path = os.path.join(root_dir, item)
+        is_last = (i == len(items) - 1)
+        
+        # Select the branch character
+        connector = "└── " if is_last else "├── "
+        tree_lines.append(f"{prefix}{connector}{item}")
+        
+        if os.path.isdir(path):
+            # Recurse and add the resulting lines to our list
+            extension = "    " if is_last else "│   "
+            tree_lines.append(get_tree_string(path, prefix + extension).rstrip())
+
+    return "\n".join(tree_lines)
 
 @tool
 async def get_file_structure_context(path: str = "./"):
@@ -16,13 +45,7 @@ async def get_file_structure_context(path: str = "./"):
     Returns:
         A dictionary containing the text-based tree structure of the files.
     """
-    try:
-        # Note: 'tree /f' is a Windows command. For cross-platform, 
-        # consider a python-based walker if this fails on Linux.
-        cmd = ["tree", "/f", path]
-        tree_output = subprocess.check_output(cmd, shell=True).decode("utf-8", errors="ignore")
-    except subprocess.CalledProcessError as e:
-        tree_output = f"Error retrieving structure: {str(e)}"
+    tree_output = get_tree_string(path)
 
     return {
         "content": [{"type": "text", "text": tree_output}],

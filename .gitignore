@@ -53,3 +53,5 @@ Thumbs.db
 *.swp
 
 ./execution-environment/company-private-repo/demo_data.json
+
+test.py
