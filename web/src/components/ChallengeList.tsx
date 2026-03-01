@@ -47,9 +47,9 @@ export default function ChallengeList({
         c.company.toLowerCase().includes(q);
       if (!matchesSearch) return false;
       if (isPast) return new Date(c.deadline).getTime() <= now;
-      if (isRecent) return new Date(c.startDate).getTime() <= now && new Date(c.deadline).getTime() > now;
+      if (isRecent) return new Date(c.startDate).getTime() <= now;
       if (isUpcoming) return new Date(c.startDate).getTime() > now;
-      if (isDeadline) return new Date(c.startDate).getTime() <= now && new Date(c.deadline).getTime() > now;
+      if (isDeadline) return new Date(c.startDate).getTime() <= now;
       return true;
     });
 
