@@ -38,7 +38,7 @@ var batchCmd = &cobra.Command{
 			fmt.Printf("\nProcessing job %d: %s (Tag: %s)\n", processedCount, job.SubmissionID, job.DockerImageTag)
 
 			if strings.HasPrefix(job.DockerImageTag, "mock/") {
-				fmt.Println("[*] SIMULATION MODE: Generating mock metrics...")
+				fmt.Println("Generating mock metric...")
 				time.Sleep(200 * time.Millisecond) // Visually pause so the terminal doesn't blur
 
 				var passedTests bool

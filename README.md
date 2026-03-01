@@ -16,23 +16,29 @@ In anticipation of exponential AI growth, BountyBot provides students with the i
 
 BountyBot is an enterprise-grade, multi-tenant CI/CD evaluation engine for AI agents. Instead of submitting static code, students submit autonomous agents designed to fix broken enterprise codebases. 
 
-
-
 Our platform orchestrates the entire lifecycle:
 
 1. **The Web Portal (Next.js & Supabase):** Hackathon organizers create "Bounties" (failing codebases). Students submit their agent's Docker Hub image tag to the cloud queue via a seamless frontend.
-2. **The Execution Node (Go CLI):** A ruthless, highly concurrent Go orchestrator continuously polls the database for pending jobs. When a student's agent is queued, the engine locks the database row to prevent race conditions.
+2. **The Execution Node (Go CLI):** A Go orchestrator continuously polls the database for pending jobs. 
 3. **Secure Sandboxing (Docker):** The orchestrator pulls the student's untrusted image and boots it inside an isolated Docker volume containing the target codebase. 
-4. **Runtime Secret Injection:** To prevent students from leaking API keys on Docker Hub, the Go engine securely injects sponsored LLM API keys (like Gemini) directly into the container's memory at runtime.
-5. **Autonomous Evaluation:** The student's agent attempts to fix the codebase. Once the container spins down, the Go engine runs the test suite, parses the `metrics.json` file to calculate token efficiency and execution time, and aggressively reverts the Git workspace to prepare for the next competitor.
-6. **Real-Time Leaderboard:** Metrics are securely transmitted back to Vercel, instantly updating a live, dynamically sorted leaderboard based on test pass rates, token efficiency, and speed.
+4. **Autonomous Evaluation:** The student's agent attempts to fix the codebase. Once the container spins down, the Go engine runs the test suite, parses the `metrics.json` file to calculate token efficiency and execution time, and aggressively reverts the Git workspace to prepare for the next competitor.
+5. **Real-Time Leaderboard:** Metrics are securely transmitted back to the site, instantly updating a live, dynamically sorted leaderboard based on test pass rates, token efficiency, and speed.
 
-## Quick Start for Students
+## How to Start?
 
-1. **Code:** Write your agent logic inside our provided template. **Never hardcode API keys;** our orchestrator securely injects them at runtime.
-2. **Containerize:** Build and push your agent to Docker Hub: 
-   `docker build -t your-username/agent:v1 . && docker push your-username/agent:v1`
-3. **Submit:** Paste your exact Docker Hub image tag into the BountyBot web portal to enter the execution queue.
+1. Begin by accessing the website [here](https://www.bountybot-six.vercel.app). Find the producer tab, and proceed by adding an event. One is preloaded for you. 
+2. Return to a student view, select the newly made challenge, and join. Although we have provided a flex of agentic powers with the complex bot (shown in the `student-submission` subfolder of this repo), it is much more timely to choose the simple option. Join the challenge. 
+3. Once you have done that, fork the provided PRIVATE repo. CD into the `company-private-repo` folder. Here is where you download the orchestrator and place it inside. 
+4. Now, you are in the challenge with 24 other dummy bots we made to save your computer from a GPU nightmare. 
+5. Run this command:
+```
+./orchestrator batch
+```
+
+6. Now, you see all of these instances spinning up. If you chose the complex options, you will get to wait and watch the AI fix the test cases and refoctor the code before the `cli` tool reverts the repo back for the next contestant. 
+7. Then, the results will be automatically sent back to the website and scored. Check it out to see if your agent won!
+
+
 
 ## Authors
-This project was authored by Nathan McCormick, Adam Alkawaz, and Ogochuckwu Ibe-Ikechi at the University of Nebraska-Lincoln's RaikesHacks hackathon on February 28 - March 1, 2026. The theme was "for students, by students." This distributed architecture was brought from ideation to production in less than 24 hours.
+This project was authored by Nathan McCormick, Adam Alkawaz, and Ogochuckwu Ibe-Ikechi at the University of Nebraska-Lincoln's RaikesHacks hackathon on February 28 - March 1, 2026. The theme was "for students, by students." We chose to participate in the Creevo track, and use their wonderful agentic tooling. This was brought from ideation to production in less than 24 hours.
