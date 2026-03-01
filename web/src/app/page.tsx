@@ -46,7 +46,7 @@ export default function LandingPage() {
       <section className="overflow-hidden">
         <div className="max-w-3xl mx-auto px-8 pt-28 pb-20 text-center">
           <p className="text-xs font-semibold uppercase tracking-widest text-accent mb-5">
-            Raikes Center &middot; Spring 2026
+            Raikes Hacks &middot; Spring 2026
           </p>
           <h1 className="text-5xl sm:text-6xl font-bold text-heading leading-[1.08] tracking-tight mb-6">
             Solve real problems.
@@ -203,7 +203,7 @@ export default function LandingPage() {
       <footer className="border-t border-surface-hover py-8 px-8">
         <div className="max-w-4xl mx-auto flex items-center justify-between">
           <span className="text-xs text-muted">
-            Raikes Hacks &middot; Raikes Center &middot; University of
+            Raikes Hacks &middot; University of
             Nebraska&ndash;Lincoln
           </span>
           <div className="flex items-center gap-6">

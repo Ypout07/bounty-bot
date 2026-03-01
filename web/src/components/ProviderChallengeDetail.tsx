@@ -32,6 +32,18 @@ function formatTime(seconds: number): string {
   return `${m}m ${String(s).padStart(2, "0")}s`;
 }
 
+function isPlayer(tag: string): boolean {
+  return !tag.startsWith("mock/") || tag === "mock/golden";
+}
+
+function calculateScore(entry: LeaderboardEntry): number {
+  const passRate = entry.total_submissions > 0 ? entry.passed / entry.total_submissions : 0;
+  const passScore = passRate * 500;
+  const timeScore = Math.max(0, 300 - (entry.avg_execution_time / 300) * 300);
+  const tokenScore = Math.max(0, 200 - (entry.avg_tokens_used / 50000) * 200);
+  return Math.round(passScore + timeScore + tokenScore);
+}
+
 function isAgenticDebugging(challenge: ProviderChallenge): boolean {
   return challenge.title === "Agentic Debugging Assistant" && challenge.company === "Creevo";
 }
@@ -168,20 +180,23 @@ export default function ProviderChallengeDetail({
                   <tr className="bg-surface-overlay text-xs uppercase tracking-wider text-muted">
                     <th className="text-left px-4 py-2.5 font-semibold w-12">#</th>
                     <th className="text-left px-4 py-2.5 font-semibold">Team</th>
+                    <th className="text-right px-4 py-2.5 font-semibold">Score</th>
                     <th className="text-right px-4 py-2.5 font-semibold">Passed</th>
                     <th className="text-right px-4 py-2.5 font-semibold">Avg Time</th>
                     <th className="text-right px-4 py-2.5 font-semibold">Tokens</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {leaderboard.map((entry, i) => {
+                  {[...leaderboard].sort((a, b) => calculateScore(b) - calculateScore(a)).map((entry, i) => {
                     const rank = i + 1;
+                    const you = isPlayer(entry.docker_image_tag);
                     return (
                       <tr
                         key={entry.docker_image_tag}
-                        className="border-t border-surface-hover"
+                        className={`border-t ${you ? "border-accent/30 bg-accent/5 ring-1 ring-accent/20" : "border-surface-hover"}`}
                       >
                         <td className={`px-4 py-2.5 font-bold ${
+                          you ? "text-accent" :
                           rank === 1 ? "text-yellow-500" :
                           rank === 2 ? "text-gray-400" :
                           rank === 3 ? "text-amber-600" : "text-muted"
@@ -189,10 +204,12 @@ export default function ProviderChallengeDetail({
                           {rank}
                         </td>
                         <td className={`px-4 py-2.5 font-medium ${
+                          you ? "text-accent" :
                           rank === 1 ? "text-yellow-500" :
                           rank === 2 ? "text-gray-400" :
                           rank === 3 ? "text-amber-600" : "text-heading"
-                        }`}>{entry.docker_image_tag}</td>
+                        }`}>{you ? "YOU" : entry.docker_image_tag}</td>
+                        <td className="px-4 py-2.5 text-right font-bold text-heading">{calculateScore(entry)}</td>
                         <td className="px-4 py-2.5 text-right text-body">{entry.passed}/{entry.total_submissions}</td>
                         <td className="px-4 py-2.5 text-right text-body">{formatTime(entry.avg_execution_time)}</td>
                         <td className="px-4 py-2.5 text-right text-muted">{Math.round(entry.avg_tokens_used).toLocaleString()}</td>

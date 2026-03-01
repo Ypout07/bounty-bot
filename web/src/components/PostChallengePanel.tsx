@@ -26,14 +26,13 @@ function useOS(): "mac" | "windows" | "unknown" {
 export default function PostChallengePanel({ onContinue }: PostChallengePanelProps) {
   const os = useOS();
 
-  // Placeholder URLs — replace with real ones later
-  const repoZipUrl = "#PLACEHOLDER_REPO_ZIP_URL";
+  const repoZipUrl = "https://github.com/fundav/raikes-hacks-company-repo/archive/refs/heads/main.zip";
   const executableUrl =
     os === "mac"
-      ? "#PLACEHOLDER_MAC_EXECUTABLE_URL"
-      : "#PLACEHOLDER_WINDOWS_EXECUTABLE_URL";
+      ? "/downloads/orchestrator"
+      : "/downloads/orchestrator.exe";
   const executableLabel =
-    os === "mac" ? "macOS executable" : os === "windows" ? "Windows executable" : "Executable";
+    os === "mac" ? "macOS orchestrator" : os === "windows" ? "Windows orchestrator" : "Orchestrator";
 
   return (
     <div className="flex flex-col h-full">
