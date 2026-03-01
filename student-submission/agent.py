@@ -1,14 +1,23 @@
 import os
-from CAL import Agent, GeminiLLM, StopTool, FullCompressionMemory, subagent
+
+from CAL import Agent, FullCompressionMemory, GeminiLLM, StopTool, subagent
 from dotenv import load_dotenv
-from tools import get_file_structure_context, read_contents_of_file, execute_file, write_file
-from prompt import SYSTEM_PROMPT, MRE_SUBAGENT_PROMPT, SE_SUBAGENT_PROMPT
+from prompt import MRE_SUBAGENT_PROMPT, SE_SUBAGENT_PROMPT, SYSTEM_PROMPT
+from tools import (
+    execute_file,
+    get_file_structure_context,
+    read_contents_of_file,
+    write_file,
+)
 
 load_dotenv()
 api_key = os.getenv("GEMINI_API_KEY")
 llm = GeminiLLM(model="gemini-3-flash-preview", api_key=api_key, max_tokens=32768)
-summarizer_llm = GeminiLLM(model="gemini-3-flash-preview", api_key=api_key, max_tokens=4096)
+summarizer_llm = GeminiLLM(
+    model="gemini-3-flash-preview", api_key=api_key, max_tokens=4096
+)
 memory = FullCompressionMemory(summarizer_llm=summarizer_llm, max_tokens=250000)
+
 
 @subagent(
     system_prompt=MRE_SUBAGENT_PROMPT,
@@ -19,6 +28,7 @@ memory = FullCompressionMemory(summarizer_llm=summarizer_llm, max_tokens=250000)
 )
 async def minimal_reproducible_example():
     pass
+
 
 @subagent(
     system_prompt=SE_SUBAGENT_PROMPT,
@@ -34,19 +44,21 @@ async def side_effects():
 agent = Agent(
     llm=llm,
     system_prompt=SYSTEM_PROMPT,
-    max_calls=50,
+    max_calls=20,
     max_tokens=32768,
     memory=memory,
     agent_name="DebugBot",
-    tools=[StopTool(), get_file_structure_context, read_contents_of_file, 
-           execute_file, write_file, minimal_reproducible_example,
-           side_effects]
+    tools=[
+        StopTool(),
+        get_file_structure_context,
+        read_contents_of_file,
+        execute_file,
+        write_file,
+    ],
 )
 
 print("\n\nFirst prompt:\n")
-result = agent.run("Look at the codebase, run the tests, and fix the problems. Don't stop until all tests pass")
-print(result.content)
-
-print("\n\nSecond prompt:\n")
-result = agent.run("Find any other problems that may exist in the code base. Remember this is for deployment. Fix all potential errors (human and code errors). If no problems are found you can stop.")
+result = agent.run(
+    "Look at the codebase, run the tests, and fix the problems. Don't stop until all tests pass"
+)
 print(result.content)
