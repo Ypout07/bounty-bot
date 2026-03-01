@@ -26,7 +26,7 @@ Our platform orchestrates the entire lifecycle:
 
 ## How to Start?
 
-1. Begin by accessing the website [here](bountybot-six.vercel.app). Find the producer tab, and proceed by adding an event. One is preloaded for you. 
+1. Begin by accessing the website [here](https://bountybot-six.vercel.app/). Find the producer tab, and proceed by adding an event. One is preloaded for you. 
 2. Return to a student view, select the newly made challenge, and join. Although we have provided a flex of agentic powers with the complex bot (shown in the `student-submission` subfolder of this repo), it is much more timely to choose the simple option. Join the challenge. 
 3. Once you have done that, fork the provided PRIVATE repo. CD into the `company-private-repo` folder. Here is where you download the orchestrator and place it inside. 
 4. Now, you are in the challenge with 24 other dummy bots we made to save your computer from a GPU nightmare. 
