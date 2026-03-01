@@ -54,7 +54,7 @@ export default function LandingPage() {
             <span className="text-accent">Build AI agents.</span>
           </h1>
           <p className="text-lg text-body leading-relaxed max-w-xl mx-auto mb-10">
-            Raikes Hacks pairs you with challenges from top tech companies.
+            BountyBot pairs you with challenges from top tech companies.
             Build intelligent agents, compete on a live leaderboard, and
             showcase your skills.
           </p>

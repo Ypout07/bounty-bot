@@ -1,6 +1,40 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { ProviderChallenge } from "@/lib/types";
+
+interface LeaderboardEntry {
+  problem_id: string;
+  docker_image_tag: string;
+  total_submissions: number;
+  passed: number;
+  avg_execution_time: number;
+  avg_tokens_used: number;
+}
+
+const MOCK_LEADERBOARD = Array.from({ length: 20 }, (_, i) => ({
+  rank: i + 1,
+  team: [
+    "AgentSmith", "BugSquasher", "FixItFelix", "CodeMonkey", "NullPointer",
+    "StackTrace", "ByteMe", "GitGud", "DevDynamo", "SyntaxError",
+    "PatchWork", "Debugger9k", "LoopBreaker", "RefactorX", "CompileKing",
+    "HotFixer", "TestPilot", "CacheMiss", "Overflow", "BitShifter",
+  ][i],
+  score: Math.round(980 - i * 32 + (Math.random() * 10 - 5)),
+  passed: `${Math.max(12 - Math.floor(i / 3), 4)}/12`,
+  avgTime: `${1 + Math.floor(i * 0.4)}m ${String(Math.floor(Math.random() * 59)).padStart(2, "0")}s`,
+  tokens: Math.round(15000 + i * 2800 + Math.random() * 1000),
+}));
+
+function formatTime(seconds: number): string {
+  const m = Math.floor(seconds / 60);
+  const s = Math.floor(seconds % 60);
+  return `${m}m ${String(s).padStart(2, "0")}s`;
+}
+
+function isAgenticDebugging(challenge: ProviderChallenge): boolean {
+  return challenge.title === "Agentic Debugging Assistant" && challenge.company === "Creevo";
+}
 
 function getTimeRemaining(deadline: string): string {
   const diff = new Date(deadline).getTime() - Date.now();
@@ -19,21 +53,6 @@ function formatDate(iso: string): string {
   });
 }
 
-// TODO: Replace with API call — fetch(`/api/leaderboard?challengeId=${challenge.id}`)
-const MOCK_LEADERBOARD = Array.from({ length: 20 }, (_, i) => ({
-  rank: i + 1,
-  team: [
-    "AgentSmith", "BugSquasher", "FixItFelix", "CodeMonkey", "NullPointer",
-    "StackTrace", "ByteMe", "GitGud", "DevDynamo", "SyntaxError",
-    "PatchWork", "Debugger9k", "LoopBreaker", "RefactorX", "CompileKing",
-    "HotFixer", "TestPilot", "CacheMiss", "Overflow", "BitShifter",
-  ][i],
-  score: Math.round(980 - i * 32 + (Math.random() * 10 - 5)),
-  passed: `${Math.max(12 - Math.floor(i / 3), 4)}/12`,
-  avgTime: `${1 + Math.floor(i * 0.4)}m ${String(Math.floor(Math.random() * 59)).padStart(2, "0")}s`,
-  tokens: Math.round(15000 + i * 2800 + Math.random() * 1000),
-}));
-
 interface ProviderChallengeDetailProps {
   challenge: ProviderChallenge;
 }
@@ -42,6 +61,15 @@ export default function ProviderChallengeDetail({
   challenge,
 }: ProviderChallengeDetailProps) {
   const timeRemaining = getTimeRemaining(challenge.deadline);
+  const [leaderboard, setLeaderboard] = useState<LeaderboardEntry[]>([]);
+
+  useEffect(() => {
+    if (!isAgenticDebugging(challenge)) return;
+    fetch(`/api/leaderboard?challengeId=${challenge.id}`)
+      .then((res) => res.json())
+      .then((data) => setLeaderboard(data))
+      .catch(() => setLeaderboard([]));
+  }, [challenge.id, challenge.title, challenge.company]);
 
   return (
     <div className="flex flex-col h-full">
@@ -133,45 +161,88 @@ export default function ProviderChallengeDetail({
           <h3 className="text-xs font-semibold uppercase tracking-wider text-muted mb-3">
             Leader Board
           </h3>
-          <div className="rounded-xl border border-surface-hover overflow-hidden">
-            <table className="w-full text-sm">
-              <thead>
-                <tr className="bg-surface-overlay text-xs uppercase tracking-wider text-muted">
-                  <th className="text-left px-4 py-2.5 font-semibold w-12">#</th>
-                  <th className="text-left px-4 py-2.5 font-semibold">Team</th>
-                  <th className="text-right px-4 py-2.5 font-semibold">Score</th>
-                  <th className="text-right px-4 py-2.5 font-semibold">Passed</th>
-                  <th className="text-right px-4 py-2.5 font-semibold">Avg Time</th>
-                  <th className="text-right px-4 py-2.5 font-semibold">Tokens</th>
-                </tr>
-              </thead>
-              <tbody>
-                {MOCK_LEADERBOARD.map((entry) => (
-                  <tr
-                    key={entry.rank}
-                    className={`border-t border-surface-hover ${""}`}
-                  >
-                    <td className={`px-4 py-2.5 font-bold ${
-                      entry.rank === 1 ? "text-yellow-500" :
-                      entry.rank === 2 ? "text-gray-400" :
-                      entry.rank === 3 ? "text-amber-600" : "text-muted"
-                    }`}>
-                      {entry.rank}
-                    </td>
-                    <td className={`px-4 py-2.5 font-medium ${
-                      entry.rank === 1 ? "text-yellow-500" :
-                      entry.rank === 2 ? "text-gray-400" :
-                      entry.rank === 3 ? "text-amber-600" : "text-heading"
-                    }`}>{entry.team}</td>
-                    <td className="px-4 py-2.5 text-right font-bold text-heading">{entry.score}</td>
-                    <td className="px-4 py-2.5 text-right text-body">{entry.passed}</td>
-                    <td className="px-4 py-2.5 text-right text-body">{entry.avgTime}</td>
-                    <td className="px-4 py-2.5 text-right text-muted">{entry.tokens.toLocaleString()}</td>
+          {isAgenticDebugging(challenge) ? (
+            <div className="rounded-xl border border-surface-hover overflow-hidden">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-surface-overlay text-xs uppercase tracking-wider text-muted">
+                    <th className="text-left px-4 py-2.5 font-semibold w-12">#</th>
+                    <th className="text-left px-4 py-2.5 font-semibold">Team</th>
+                    <th className="text-right px-4 py-2.5 font-semibold">Passed</th>
+                    <th className="text-right px-4 py-2.5 font-semibold">Avg Time</th>
+                    <th className="text-right px-4 py-2.5 font-semibold">Tokens</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {leaderboard.map((entry, i) => {
+                    const rank = i + 1;
+                    return (
+                      <tr
+                        key={entry.docker_image_tag}
+                        className="border-t border-surface-hover"
+                      >
+                        <td className={`px-4 py-2.5 font-bold ${
+                          rank === 1 ? "text-yellow-500" :
+                          rank === 2 ? "text-gray-400" :
+                          rank === 3 ? "text-amber-600" : "text-muted"
+                        }`}>
+                          {rank}
+                        </td>
+                        <td className={`px-4 py-2.5 font-medium ${
+                          rank === 1 ? "text-yellow-500" :
+                          rank === 2 ? "text-gray-400" :
+                          rank === 3 ? "text-amber-600" : "text-heading"
+                        }`}>{entry.docker_image_tag}</td>
+                        <td className="px-4 py-2.5 text-right text-body">{entry.passed}/{entry.total_submissions}</td>
+                        <td className="px-4 py-2.5 text-right text-body">{formatTime(entry.avg_execution_time)}</td>
+                        <td className="px-4 py-2.5 text-right text-muted">{Math.round(entry.avg_tokens_used).toLocaleString()}</td>
+                      </tr>
+                    );
+                  })}
+                </tbody>
+              </table>
+            </div>
+          ) : (
+            <div className="rounded-xl border border-surface-hover overflow-hidden">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="bg-surface-overlay text-xs uppercase tracking-wider text-muted">
+                    <th className="text-left px-4 py-2.5 font-semibold w-12">#</th>
+                    <th className="text-left px-4 py-2.5 font-semibold">Team</th>
+                    <th className="text-right px-4 py-2.5 font-semibold">Score</th>
+                    <th className="text-right px-4 py-2.5 font-semibold">Passed</th>
+                    <th className="text-right px-4 py-2.5 font-semibold">Avg Time</th>
+                    <th className="text-right px-4 py-2.5 font-semibold">Tokens</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {MOCK_LEADERBOARD.map((entry) => (
+                    <tr
+                      key={entry.rank}
+                      className="border-t border-surface-hover"
+                    >
+                      <td className={`px-4 py-2.5 font-bold ${
+                        entry.rank === 1 ? "text-yellow-500" :
+                        entry.rank === 2 ? "text-gray-400" :
+                        entry.rank === 3 ? "text-amber-600" : "text-muted"
+                      }`}>
+                        {entry.rank}
+                      </td>
+                      <td className={`px-4 py-2.5 font-medium ${
+                        entry.rank === 1 ? "text-yellow-500" :
+                        entry.rank === 2 ? "text-gray-400" :
+                        entry.rank === 3 ? "text-amber-600" : "text-heading"
+                      }`}>{entry.team}</td>
+                      <td className="px-4 py-2.5 text-right font-bold text-heading">{entry.score}</td>
+                      <td className="px-4 py-2.5 text-right text-body">{entry.passed}</td>
+                      <td className="px-4 py-2.5 text-right text-body">{entry.avgTime}</td>
+                      <td className="px-4 py-2.5 text-right text-muted">{entry.tokens.toLocaleString()}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
       </div>
     </div>
