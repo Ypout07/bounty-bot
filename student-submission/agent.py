@@ -32,8 +32,8 @@ load_dotenv()
 
 # Hardcode Maxim API Key and Log Repo ID below
 # THE USER WILL REPLACE THESE
-os.environ["MAXIM_API_KEY"] = "sk_mx_mm7nasrb_ifajFnrz3YAmilFWijSUNcogqc0ArrKQ"
-os.environ["MAXIM_LOG_REPO_ID"] = "cmm7ndaup01cbm7vpa3c26wn9"
+os.environ["MAXIM_API_KEY"] = "insert"
+os.environ["MAXIM_LOG_REPO_ID"] = "insert"
 
 api_key = os.getenv("GEMINI_API_KEY")
 
