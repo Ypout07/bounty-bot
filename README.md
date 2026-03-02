@@ -23,17 +23,17 @@ BountyBot is a CI/CD evaluation engine for AI agents. Instead of submitting stat
 
 Our platform orchestrates the entire lifecycle:
 
-1. **The Web Portal (Next.js & Supabase):** Companies create "Bounties" (failing codebases, pending jobs, or inefficient code). Students are forwarded an obfuscated code base that has stripped all of the identifying business logic and proprietary tech -- this acts as a "baseline." A simpler, less complex version of the problem the company needs solved. 
+1. **The Web Portal (Next.js & Supabase):** Companies create "Bounties" (failing codebases, pending jobs, or inefficient code). Students are forwarded an obfuscated codebase that has stripped all of the identifying business logic and proprietary tech -- this acts as a "baseline." A simpler, less complex version of the problem the company needs solved. 
 
 2. **The Template (Creevo Agentic Tooling):** Students are then provided with simple onboarding instructions on the "Getting Started" page. This includes a template with boilerplate code to help turn your agentic solution into a Docker image. As students create their submission, they enhance the system prompt, add tooling, adjust parameters, and anything else they can dream of! 
 
-3. **Submissions:** After a proper Docker image has been made, students push their code to Ducker Hub, and submit its tag on the site. This gets stored on our backend, ready to be pulled and evaluated.  
+3. **Submissions:** After a proper Docker image has been made, students push their code to Docker Hub, and submit its tag on the site. This gets stored on our backend, ready to be pulled and evaluated.  
 
 4. **The Execution CLI (Golang):** A CLI tool is provided to be easily hooked into existing company CI/CD pipelines. This gets compiled into an executable binary, and can either run a single image with the tag, or run through all images with the `batch` command. It queries the API endpoint for all submitted tag in the database, and sequentially pulls them from Docker Hub.  
 
-5. **Secure Sandboxing (Docker):** Once the orchestrator has pulled, it automaticaally boots inside an isolated Docker volume with the target codebase inside and starts running. 
+5. **Secure Sandboxing (Docker):** Once the orchestrator has pulled, it automatically boots inside an isolated Docker volume with the target codebase inside and starts running. 
 
-6. **Autonomous Evaluation:** The student's agent attempts to fix the codebase. Throughout the process, the agents have their token usage logged via the Maxim API. When the Agent is satisfied, the container spins down, the Go engine runs the test suite, parses the `metrics.json` file to calculate token efficiency and execution time, and completely reverts the Git workspace to prepare for the next competitor. The companiy's CI/CD pipeline provides the CLI with the updated performance metrics. 
+6. **Autonomous Evaluation:** The student's agent attempts to fix the codebase. Throughout the process, the agents have their token usage logged via the Maxim API. When the Agent is satisfied, the container spins down, the Go engine runs the test suite, parses the `metrics.json` file to calculate token efficiency and execution time, and completely reverts the Git workspace to prepare for the next competitor. The company's CI/CD pipeline provides the CLI with the updated performance metrics. 
 
 7. **Real-Time Leaderboard:** These metrics are securely transmitted back to the site, calculated to produce each student's score, and finally ranked on the leaderboard!
 
@@ -51,11 +51,11 @@ npm run dev
 cd cli 
 go build -o orchestrator.exe main.go
 ```
-  - If on MacOS, remove the `.exe`. 
+- If on MacOS, remove the `.exe`. 
   
 3. Clone the template provided and build your own agent, or just take the `student-submission` example that we have provided for you. You can test a custom bot on the `student-dummy-repo` before you pass it through the real private repo. 
 
-4. Try your hand at the pre-made challenge on the website. Publish it as a company and view it as a student. Once finsihed, you can submit your Docker Hub tag. Otherwise, we provided you the option of running our custom bot or a fake bot that bypasses the tests to save you time!
+4. Try your hand at the pre-made challenge on the website. Publish it as a company and view it as a student. Once finished, you can submit your Docker Hub tag. Otherwise, we provided you the option of running our custom bot or a fake bot that bypasses the tests to save you time!
 
 5. Once everything is submitted, your entry and 24 "dummy bots" will be queued and ready to be evaluated. 
 
@@ -66,13 +66,13 @@ go build -o orchestrator.exe main.go
 
 7. Now, you will see each one get pulled and evaluated. You will be able to see which entries are mock entries, but if you chose our bot or made your own, you can watch it actually run and try to fix the broken test case and inefficiency! Check out the private repo to see if you can find the bugs better than the agent :)
 
-8. Once everything has ran, return to the website to see the updated leaderboard. Did you win?
+8. Once everything has run, return to the website to see the updated leaderboard. Did you win?
 
 ## Additional Information
 
 - Check out each subdirectory of this repo. They all act as separate entities in this workflow, and they each have their own README with a little extra information. 
 
-- Originally, this project was hosted on Vercel with a Supabase backend. Becuase of this, it becomes a bit difficult to reproduce the database functionality locally. 
+- Originally, this project was hosted on Vercel with a Supabase backend. Because of this, it becomes a bit difficult to reproduce the database functionality locally. 
 
 - The private repo is a fully functional python system similar to Jira -- check it out and run it with: 
 ``` bash
